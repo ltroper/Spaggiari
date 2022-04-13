@@ -7,11 +7,23 @@ import NavBar from './components/NavBar';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import User from './components/User';
+import Portfolio from './components/Portfolio';
 import { authenticate } from './store/session';
+import {getAllCryptosThunk} from './store/portfolio'
+import CryptoPage from './components/Crypto/CryptoPage';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
+
+
+  // const cryptoObj = useSelector(state=>state.crypto)
+  // const cryptoArray = Object.values(cryptoObj)
+
+  useEffect(() => {
+      dispatch(getAllCryptosThunk());
+    }, [dispatch]);
+
 
   useEffect(() => {
     (async() => {
@@ -41,7 +53,10 @@ function App() {
           <User />
         </ProtectedRoute>
         <ProtectedRoute path='/' exact={true} >
-          <h1>My Home Page</h1>
+          <Portfolio />
+        </ProtectedRoute>
+        <ProtectedRoute path='/crypto/:cryptoId' exact={true} >
+          <CryptoPage />
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>

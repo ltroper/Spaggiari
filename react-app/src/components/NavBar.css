@@ -1,0 +1,6 @@
+.nav-bar-container > ul {
+    display: flex;
+    justify-content: space-around;
+    padding-bottom: 1em;
+    border-bottom: solid 1px black;
+}
