@@ -1,8 +1,14 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+
+import { addToPortfolioThunk } from "../../store/portfolio";
+import { updateUserThunk } from "../../store/user";
+import { addTransactionThunk } from "../../store/transaction";
+
 
 const BuyCrypto = ({ thisCrypto }) => {
 
+    const dispatch = useDispatch()
 
     const [buying, setBuying] = useState(true)
     const [dollars, setDollars] = useState("dollar")
@@ -20,15 +26,65 @@ const BuyCrypto = ({ thisCrypto }) => {
         cashBalance = sessionUser.cash
     }
 
-    const handleSubmit = () => {
-        return
+    const handleBuySubmit = (e) => {
+        e.preventDefault();
+        let user = {
+            id: sessionUser.id,
+            cash: -investment
+        };
+
+        let portfolio = {
+            crypto_id: thisCrypto.id,
+            user_id: sessionUser.id,
+            total_price: investment,
+            quantity: investment / thisCrypto.current_price
+        }
+
+        let transaction = {
+            crypto_id: thisCrypto.id,
+            user_id: sessionUser.id,
+            type: "buy",
+            price: investment,
+            quantity: investment / thisCrypto.current_price
+        }
+
+        dispatch(updateUserThunk(user))
+        dispatch(addToPortfolioThunk(portfolio))
+        dispatch(addTransactionThunk(transaction))
+    }
+
+    const handleBuySubmitCrypto = (e) => {
+        e.preventDefault();
+        let user = {
+            id: sessionUser.id,
+            cash: -investment
+        };
+
+        let portfolio = {
+            crypto_id: thisCrypto.id,
+            user_id: sessionUser.id,
+            total_price: investment * thisCrypto.current_price,
+            quantity: investment
+        }
+
+        let transaction = {
+            crypto_id: thisCrypto.id,
+            user_id: sessionUser.id,
+            type: "buy",
+            price: investment * thisCrypto.current_price,
+            quantity: investment
+        }
+
+        dispatch(updateUserThunk(user))
+        dispatch(addToPortfolioThunk(portfolio))
+        dispatch(addTransactionThunk(transaction))
     }
 
 
     return (
         <div>
-            <button onClick={e => setBuying(true)}>Buy {thisCrypto.name}</button>
-            <button onClick={e => setBuying(false)}>Sell {thisCrypto.name}</button>
+            <button onClick={e => setBuying(true)}>Buy {thisCrypto?.symbol}</button>
+            <button onClick={e => setBuying(false)}>Sell {thisCrypto?.symbol}</button>
             {buying &&
                 <div>
                     <select onChange={e => setDollars(e.target.value)}>
@@ -38,70 +94,98 @@ const BuyCrypto = ({ thisCrypto }) => {
                     </select>
                     <div>
                         {dollars === "dollar" &&
-                        <form onSubmit={handleSubmit}>
-                            <label>Amount
-                                <input
-                                    type="number"
-                                    min="0"
-                                    max={cashBalance}
-                                    value={investment}
-                                    onChange={e => setInvestment(e.target.value)}
-                                    required
-                                />
-                            </label>
-                            <label>Est. Quantity
-                                <input
-                                type="number"
-                                value={investment/thisCrypto.current_price}
-                                />
-                            </label>
-                            <button
-                                type="submit"
-                            >
-                                Submit
-                            </button>
+                            <form onSubmit={handleBuySubmit}>
+                                <label>Amount
+                                    <input
+                                        type="number"
+                                        min="0"
+                                        max={cashBalance}
+                                        value={investment}
+                                        onChange={e => setInvestment(e.target.value)}
+                                        required
+                                    />
+                                </label>
+                                <label>Est. Quantity
+                                    <input
+                                        type="number"
+                                        value={investment / thisCrypto?.current_price}
+                                    />
+                                </label>
+                                <button
+                                    type="submit"
+                                >
+                                    Submit
+                                </button>
 
-                        </form>
+                            </form>
+                        }
+                        {dollars === "crypto" &&
+                            <form onSubmit={handleBuySubmitCrypto}>
+                                <label>Amount
+                                    <input
+                                        type="number"
+                                        min="0"
+                                        max={cashBalance / thisCrypto?.current_price}
+                                        value={investment}
+                                        onChange={e => setInvestment(e.target.value)}
+                                        required
+                                    />
+                                </label>
+                                <label>Est. Dollars
+                                    <input
+                                        type="number"
+                                        value={investment * thisCrypto?.current_price}
+                                    />
+                                </label>
+                                <button
+                                    type="submit"
+                                >
+                                    Submit
+                                </button>
+
+                            </form>
+
+
                         }
                     </div>
                 </div>
             }
             {!buying &&
                 <div>
-                <select onChange={e => setDollars(e.target.value)}>
-                    Invest in
-                    <option value="dollar">Dollars</option>
-                    <option value="crypto">Crypto</option>
-                </select>
-                <div>
-                    {dollars === "dollar" &&
-                    <form onSubmit={handleSubmit}>
-                        <label>Amount
-                            <input
-                                type="number"
-                                min="0"
-                                max={cashBalance}
-                                value={investment}
-                                onChange={e => setInvestment(e.target.value)}
-                                required
-                            />
-                        </label>
-                        <label>Est. Quantity
-                            <input
-                            type="number"
-                            value={investment/thisCrypto.current_price}
-                            />
-                        </label>
-                        <button
-                            type="submit"
-                        >
-                            Submit
-                        </button>
+                    <select onChange={e => setDollars(e.target.value)}>
+                        Invest in
+                        <option value="dollar">Dollars</option>
+                        <option value="crypto">Crypto</option>
+                    </select>
+                    <div>
+                        {dollars === "dollar" &&
+                            <form>
+                                <label>Amount
+                                    <input
+                                        type="number"
+                                        min="0"
+                                        max={cashBalance}
+                                        value={investment}
+                                        onChange={e => setInvestment(e.target.value)}
+                                        required
+                                    />
+                                </label>
+                                <label>Est. Quantity
+                                    <input
+                                        type="number"
+                                        value={investment / thisCrypto.current_price}
+                                    />
+                                </label>
+                                <button
+                                    type="submit"
+                                >
+                                    Submit
+                                </button>
 
-                    </form>
-                    }
+                            </form>
+                        }
+                    </div>
                 </div>
-            </div>
             }
         </div>
     )

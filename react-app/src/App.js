@@ -9,7 +9,7 @@ import UsersList from './components/UsersList';
 import User from './components/User';
 import Portfolio from './components/Portfolio';
 import { authenticate } from './store/session';
-import {getAllCryptosThunk} from './store/portfolio'
+import {getAllCryptosThunk} from './store/crypto'
 import CryptoPage from './components/Crypto/CryptoPage';
 
 function App() {
