@@ -2,6 +2,8 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 
+import BuyCrypto from "./BuyCrypto";
+
 const CryptoPage = () => {
 
 
@@ -15,7 +17,10 @@ const CryptoPage = () => {
     console.log(thisCrypto)
 
     return (
-        <h1>{thisCrypto.name}</h1>
+        <div>
+            <h1>{thisCrypto.name}</h1>
+            <BuyCrypto thisCrypto={thisCrypto}/>
+        </div>
     )
 }
 
