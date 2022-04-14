@@ -12,7 +12,7 @@ const BuyCrypto = ({ thisCrypto }) => {
 
     const [buying, setBuying] = useState(true)
     const [dollars, setDollars] = useState("dollar")
-    const [investment, setInvestment] = useState(0)
+    const [investment, setInvestment] = useState()
 
     const sessionUser = useSelector(state => state.session.user);
     const userWithCash = useSelector(state => state.user[1]?.cash)
@@ -100,16 +100,20 @@ const BuyCrypto = ({ thisCrypto }) => {
                                         type="number"
                                         min="0"
                                         max={cashBalance}
+                                        placeholder="$0.00"
                                         value={investment}
                                         onChange={e => setInvestment(e.target.value)}
                                         required
                                     />
                                 </label>
                                 <label>Est. Quantity
-                                    <input
-                                        type="number"
-                                        value={investment / thisCrypto?.current_price}
-                                    />
+                                    <div>
+                                        {investment > 0 &&
+                                            <p>
+                                                {investment / thisCrypto?.current_price}{" "}{thisCrypto?.symbol}
+                                            </p>
+                                        }
+                                    </div>
                                 </label>
                                 <button
                                     type="submit"
@@ -132,10 +136,13 @@ const BuyCrypto = ({ thisCrypto }) => {
                                     />
                                 </label>
                                 <label>Est. Dollars
-                                    <input
-                                        type="number"
-                                        value={investment * thisCrypto?.current_price}
-                                    />
+                                    <div>
+                                        {investment > 0 &&
+                                            <p>
+                                                {"$"}{investment * thisCrypto?.current_price}
+                                            </p>
+                                        }
+                                    </div>
                                 </label>
                                 <button
                                     type="submit"
