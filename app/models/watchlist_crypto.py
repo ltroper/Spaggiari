@@ -9,7 +9,7 @@ class Watchlist_crypto(db.Model, UserMixin):
     crypto_id = db.Column(db.String(50), nullable=False)
     watchlist_id = db.Column(db.Integer, db.ForeignKey("watchlists.id", ondelete="CASCADE"), nullable=False)
 
-    user = db.relationship("Watchlist", back_populates="watchlist_cryptos")
+    watchlists = db.relationship("Watchlist", back_populates="watchlist_cryptos")
 
     def to_dict(self):
         return {

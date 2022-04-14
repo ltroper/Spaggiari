@@ -12,13 +12,9 @@ const CryptoPage = () => {
 
     const thisCrypto = cryptoObj[cryptoId.cryptoId]
 
-    console.log(cryptoObj)
-    console.log(cryptoId.cryptoId)
-    console.log(thisCrypto)
-
     return (
         <div>
-            <h1>{thisCrypto.name}</h1>
+            <h1>{thisCrypto?.name}</h1>
             <BuyCrypto thisCrypto={thisCrypto}/>
         </div>
     )

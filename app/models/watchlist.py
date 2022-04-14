@@ -10,6 +10,7 @@ class Watchlist(db.Model, UserMixin):
     user_id = db.Column(db.Integer, db.ForeignKey("users.id", ondelete="CASCADE"), nullable=False)
 
     user = db.relationship("User", back_populates="watchlists")
+    watchlist_cryptos = db.relationship("Watchlist_crypto",  back_populates="watchlists")
 
     def to_dict(self):
         return {
