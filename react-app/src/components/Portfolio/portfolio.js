@@ -8,7 +8,7 @@ const CryptoPortfolio = ({ cryptoObj, cryptoObjPricePaid }) => {
 
     const allCryptos = useSelector(state => state.crypto)
 
-    console.log(cryptoObj)
+    console.log(cryptoObjPricePaid)
 
 
 
@@ -29,6 +29,15 @@ const CryptoPortfolio = ({ cryptoObj, cryptoObjPricePaid }) => {
                         </div>
                         <div className="portfolio-individual-coin-right">
                             <p className="small-crypto-values">${(value * allCryptos[key]?.current_price).toFixed(2)}</p>
+                            <p className={"net-percentage-" + (((((
+                                value * allCryptos[key]?.current_price)
+                                / cryptoObjPricePaid[key])
+                                * 100) - 100) > 0 ? "positive" : "negative")}>
+                                {((((
+                                    value * allCryptos[key]?.current_price)
+                                    / cryptoObjPricePaid[key])
+                                    * 100) - 100).toFixed(2)}%
+                            </p>
                         </div>
                     </div>
                 ))
