@@ -35,7 +35,7 @@ const BuyCrypto = ({ thisCrypto }) => {
         cashBalance = sessionUser.cash
     }
 
-    const handleBuySubmit = e => {
+    async function handleBuySubmit(e){
         e.preventDefault();
         let user = {
             id: sessionUser.id,
@@ -58,13 +58,13 @@ const BuyCrypto = ({ thisCrypto }) => {
         }
 
         dispatch(updateUserThunk(user))
-        dispatch(addToPortfolioThunk(portfolio))
-        dispatch(addTransactionThunk(transaction))
+        await dispatch(addToPortfolioThunk(portfolio))
+        await dispatch(addTransactionThunk(transaction))
         history.push("/")
 
     }
 
-    const handleBuySubmitCrypto = e => {
+    async function handleBuySubmitCrypto(e){
         e.preventDefault();
         let user = {
             id: sessionUser.id,
@@ -87,13 +87,13 @@ const BuyCrypto = ({ thisCrypto }) => {
         }
 
         dispatch(updateUserThunk(user))
-        dispatch(addToPortfolioThunk(portfolio))
-        dispatch(addTransactionThunk(transaction))
+        await dispatch(addToPortfolioThunk(portfolio))
+        await dispatch(addTransactionThunk(transaction))
         history.push("/")
 
     }
 
-    const handleSellSubmit = e => {
+    async function handleSellSubmit(e){
         e.preventDefault();
 
         let user = {
@@ -117,12 +117,12 @@ const BuyCrypto = ({ thisCrypto }) => {
         }
 
         dispatch(updateUserThunk(user))
-        dispatch(addToPortfolioThunk(portfolio))
-        dispatch(addTransactionThunk(transaction))
+        await dispatch(addToPortfolioThunk(portfolio))
+        await dispatch(addTransactionThunk(transaction))
         history.push("/")
     }
 
-    const handleSellSubmitCrypto = e => {
+    async function handleSellSubmitCrypto(e){
 
         e.preventDefault();
         let user = {
@@ -146,8 +146,8 @@ const BuyCrypto = ({ thisCrypto }) => {
         }
 
         dispatch(updateUserThunk(user))
-        dispatch(addToPortfolioThunk(portfolio))
-        dispatch(addTransactionThunk(transaction))
+        await dispatch(addToPortfolioThunk(portfolio))
+        await dispatch(addTransactionThunk(transaction))
         history.push("/")
     }
 

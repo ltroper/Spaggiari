@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 
 import './portfolio.css'
 
-const CryptoPortfolio = ({ cryptoObj }) => {
+const CryptoPortfolio = ({ cryptoObj, cryptoObjPricePaid }) => {
 
     const allCryptos = useSelector(state => state.crypto)
 

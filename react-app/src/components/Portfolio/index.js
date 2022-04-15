@@ -14,6 +14,7 @@ const Portfolio = () => {
     const dispatch = useDispatch()
 
     useEffect(() => {
+        console.log("hello")
         dispatch(getPortfolioThunk(id));
     }, [dispatch]);
 
@@ -26,6 +27,7 @@ const Portfolio = () => {
 
 
     let cryptoObj = {}
+    let cryptoObjPricePaid = {}
 
 
     {
@@ -33,9 +35,11 @@ const Portfolio = () => {
             cryptoArr.forEach(element => {
                 if (cryptoObj[element.crypto_id] == null) {
                     cryptoObj[element.crypto_id] = element.quantity
+                    cryptoObjPricePaid[element.crypto_id] = element.total_price
                 }
                 else {
                     cryptoObj[element.crypto_id] = parseFloat(cryptoObj[element.crypto_id]) + element.quantity
+                    cryptoObjPricePaid[element.crypto_id] = parseFloat(cryptoObjPricePaid[element.crypto_id]) + element.total_price
                 }
             });
         }
@@ -46,7 +50,13 @@ const Portfolio = () => {
         totalCryptoMoney += value * allCryptos[key]?.current_price
     ))
 
+    let totalMoneyPaid = 0
+    Object.entries(cryptoObjPricePaid).map(([key, value]) => (
+        totalMoneyPaid += value
+    ))
 
+    let netProfit = totalCryptoMoney - totalMoneyPaid
+    let netPercentage = ((totalCryptoMoney / totalMoneyPaid) * 100) - 100
 
 
 
@@ -54,11 +64,16 @@ const Portfolio = () => {
     return (
         <div className="body-portfolio">
             <div className="left-container-portfolio">
-                <h1>${totalCryptoMoney.toFixed(2)}</h1>
+                <h1 className="total-money-invested">${totalCryptoMoney.toFixed(2)}</h1>
+                <p className={"net-percentage-" + (netPercentage > 0 ? "positive" : "negative")}>
+                    ${netProfit.toFixed(2)}
+                    {" "}
+                    ({netPercentage.toFixed(2)}%)
+                </p>
                 <AddCash />
             </div>
             <div className="right-container-portfolio">
-                <CryptoPortfolio cryptoObj={cryptoObj} />
+                <CryptoPortfolio cryptoObj={cryptoObj} cryptoObjPricePaid={cryptoObjPricePaid} />
             </div>
         </div>
 

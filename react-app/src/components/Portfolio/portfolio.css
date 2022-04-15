@@ -10,6 +10,22 @@
     grid-area: a;
 }
 
+.total-money-invested {
+    margin-bottom: 0.3rem;
+}
+
+.net-percentage-positive {
+    margin-top: 0%;
+    color: green;
+    font-size: 0.9rem;
+}
+
+.net-percentage-negative {
+    margin-top: 0%;
+    color: red;
+    font-size: 0.9rem;
+}
+
 .right-container-portfolio {
     grid-area: c;
     position: sticky;
