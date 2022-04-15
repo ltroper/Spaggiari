@@ -29,11 +29,12 @@ const SearchBar = () => {
             <input
                 type='text'
                 placeholder='Search Cryptos'
+                value={search}
                 onChange={e => setSearch(e.target.value)}
             />
             <div>
                 {filteredSearch?.map(crypto => (
-                    <NavLink to={`/crypto/${crypto.id}`}>
+                    <NavLink to={`/crypto/${crypto.id}`} onClick={e => setSearch("")}>
                         <div key={crypto.id}>{crypto.name}</div>
                     </NavLink>
                 ))}

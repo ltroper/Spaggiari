@@ -15,6 +15,7 @@ const CryptoPage = () => {
     return (
         <div>
             <h1>{thisCrypto?.name}</h1>
+            <h2>${thisCrypto?.current_price}</h2>
             <BuyCrypto thisCrypto={thisCrypto}/>
         </div>
     )

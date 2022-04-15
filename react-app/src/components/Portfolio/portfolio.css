@@ -1,0 +1,68 @@
+.body-portfolio {
+    margin: 2rem 6rem 0rem 8rem;
+    display: grid;
+    grid-template-areas:
+    "a b c";
+    grid-template-columns: 65% 6% 29%;
+}
+
+.left-container-portfolio {
+    grid-area: a;
+}
+
+.right-container-portfolio {
+    grid-area: c;
+    position: sticky;
+    color: antiquewhite;
+    background-color: rgb(74, 74, 74);
+    margin-top: 1rem;
+    margin-right: 2rem;
+    height: 31rem;
+    border-radius: 0.2rem;
+    border: 1px solid rgb(146, 146, 146);
+
+}
+
+.portfolio-crypto-header-container {
+    padding-left: 1.5rem;
+    height: 2.5rem;
+    border-bottom: 1px solid rgb(146, 146, 146);
+    display: flex;
+}
+
+.portfolio-crypto-header {
+    justify-content: center;
+    margin-top: 0.65rem;
+}
+
+.portfolio-crypto-coins-container {
+    border-bottom: 1px solid rgb(146, 146, 146);
+}
+
+.portfolio-individual-coin-container {
+    display: grid;
+    grid-template-areas:
+    "a b c";
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.portfolio-individual-coin-left {
+    grid-area: a;
+    padding-left: 1.5rem;
+}
+
+.portfolio-individual-coin-right {
+    grid-area: c;
+}
+
+.small-crypto-symbol {
+    font-weight: 600;
+    font-size: small;
+    margin: 0.4rem 0 0.4rem 0;
+}
+
+.small-crypto-values {
+    font-weight: 400;
+    font-size: smaller;
+    margin: 0.4rem 0 0.4rem 0;
+}
