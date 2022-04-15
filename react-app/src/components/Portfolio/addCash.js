@@ -2,7 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { updateUserThunk } from '../../store/user';
 
-const AddCash = () => {
+import './portfolio.css'
+
+
+const AddCash = ({}) => {
 
     const dispatch = useDispatch()
 
@@ -39,7 +42,7 @@ const AddCash = () => {
     return (
         <div>
             <h3>Cash Balance:</h3>
-            <h3>{cashBalance}</h3>
+            <h3>${cashBalance.toFixed(2)}</h3>
             {!addCash &&
                 <button
                     onClick={e => setAddCash(true)}

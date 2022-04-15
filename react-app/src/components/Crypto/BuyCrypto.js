@@ -1,12 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 import { addToPortfolioThunk } from "../../store/portfolio";
 import { updateUserThunk } from "../../store/user";
 import { addTransactionThunk } from "../../store/transaction";
+import { useHistory } from "react-router-dom";
 
+import { getPortfolioThunk } from "../../store/portfolio";
+
+import './cryptoPage.css'
 
 const BuyCrypto = ({ thisCrypto }) => {
+
+    const history = useHistory()
 
     const dispatch = useDispatch()
 
@@ -16,6 +22,9 @@ const BuyCrypto = ({ thisCrypto }) => {
 
     const sessionUser = useSelector(state => state.session.user);
     const userWithCash = useSelector(state => state.user[1]?.cash)
+    const cryptoArr = useSelector(state => state.portfolio);
+
+    const id = sessionUser.id
 
     let cashBalance
 
@@ -26,7 +35,7 @@ const BuyCrypto = ({ thisCrypto }) => {
         cashBalance = sessionUser.cash
     }
 
-    const handleBuySubmit = (e) => {
+    async function handleBuySubmit(e){
         e.preventDefault();
         let user = {
             id: sessionUser.id,
@@ -49,11 +58,13 @@ const BuyCrypto = ({ thisCrypto }) => {
         }
 
         dispatch(updateUserThunk(user))
-        dispatch(addToPortfolioThunk(portfolio))
-        dispatch(addTransactionThunk(transaction))
+        await dispatch(addToPortfolioThunk(portfolio))
+        await dispatch(addTransactionThunk(transaction))
+        history.push("/")
+
     }
 
-    const handleBuySubmitCrypto = (e) => {
+    async function handleBuySubmitCrypto(e){
         e.preventDefault();
         let user = {
             id: sessionUser.id,
@@ -76,16 +87,96 @@ const BuyCrypto = ({ thisCrypto }) => {
         }
 
         dispatch(updateUserThunk(user))
-        dispatch(addToPortfolioThunk(portfolio))
-        dispatch(addTransactionThunk(transaction))
+        await dispatch(addToPortfolioThunk(portfolio))
+        await dispatch(addTransactionThunk(transaction))
+        history.push("/")
+
+    }
+
+    async function handleSellSubmit(e){
+        e.preventDefault();
+
+        let user = {
+            id: sessionUser?.id,
+            cash: investment
+        };
+
+        let portfolio = {
+            crypto_id: thisCrypto?.id,
+            user_id: sessionUser?.id,
+            total_price: -investment,
+            quantity: -(investment / thisCrypto?.current_price)
+        }
+
+        let transaction = {
+            crypto_id: thisCrypto?.id,
+            user_id: sessionUser?.id,
+            type: "sell",
+            price: investment,
+            quantity: investment / thisCrypto?.current_price
+        }
+
+        dispatch(updateUserThunk(user))
+        await dispatch(addToPortfolioThunk(portfolio))
+        await dispatch(addTransactionThunk(transaction))
+        history.push("/")
+    }
+
+    async function handleSellSubmitCrypto(e){
+
+        e.preventDefault();
+        let user = {
+            id: sessionUser?.id,
+            cash: investment
+        };
+
+        let portfolio = {
+            crypto_id: thisCrypto?.id,
+            user_id: sessionUser?.id,
+            total_price: -(investment * thisCrypto?.current_price),
+            quantity: -investment
+        }
+
+        let transaction = {
+            crypto_id: thisCrypto?.id,
+            user_id: sessionUser?.id,
+            type: "sell",
+            price: investment * thisCrypto?.current_price,
+            quantity: investment
+        }
+
+        dispatch(updateUserThunk(user))
+        await dispatch(addToPortfolioThunk(portfolio))
+        await dispatch(addTransactionThunk(transaction))
+        history.push("/")
+    }
+
+
+    useEffect(() => {
+        dispatch(getPortfolioThunk(id));
+    }, [dispatch]);
+
+    let cryptoObj = {}
+
+
+    {
+        if (cryptoArr?.length > 0) {
+            cryptoArr.forEach(element => {
+                if (cryptoObj[element.crypto_id] == null) {
+                    cryptoObj[element.crypto_id] = element.quantity
+                }
+                else {
+                    cryptoObj[element.crypto_id] = parseFloat(cryptoObj[element.crypto_id]) + element.quantity
+                }
+            });
+        }
     }
 
 
     return (
         <div>
-            <button onClick={e => setBuying(true)}>Buy {thisCrypto?.symbol}</button>
-            <button onClick={e => setBuying(false)}>Sell {thisCrypto?.symbol}</button>
-            {buying &&
+            <button onClick={e => setBuying(true)} className={"buy-sell-buttons-"+(buying ? "active" : "not")}>Buy {thisCrypto?.symbol}</button>
+            <button onClick={e => setBuying(false)} className={"buy-sell-buttons-"+(buying ? "not" : "active")}>Sell {thisCrypto?.symbol}</button>
                 <div>
                     <select onChange={e => setDollars(e.target.value)}>
                         Invest in
@@ -94,12 +185,12 @@ const BuyCrypto = ({ thisCrypto }) => {
                     </select>
                     <div>
                         {dollars === "dollar" &&
-                            <form onSubmit={handleBuySubmit}>
+                            <form onSubmit={buying ? handleBuySubmit : handleSellSubmit}>
                                 <label>Amount
                                     <input
                                         type="number"
                                         min="0"
-                                        max={cashBalance}
+                                        max={buying ? cashBalance : cryptoObj[thisCrypto.id] * thisCrypto.current_price}
                                         placeholder="$0.00"
                                         value={investment}
                                         onChange={e => setInvestment(e.target.value)}
@@ -124,12 +215,12 @@ const BuyCrypto = ({ thisCrypto }) => {
                             </form>
                         }
                         {dollars === "crypto" &&
-                            <form onSubmit={handleBuySubmitCrypto}>
+                            <form onSubmit={buying ? handleBuySubmitCrypto : handleSellSubmitCrypto}>
                                 <label>Amount
                                     <input
                                         type="number"
                                         min="0"
-                                        max={cashBalance / thisCrypto?.current_price}
+                                        max={buying ? (cashBalance / thisCrypto?.current_price) : cryptoObj[thisCrypto.id]}
                                         value={investment}
                                         onChange={e => setInvestment(e.target.value)}
                                         required
@@ -139,7 +230,7 @@ const BuyCrypto = ({ thisCrypto }) => {
                                     <div>
                                         {investment > 0 &&
                                             <p>
-                                                {"$"}{investment * thisCrypto?.current_price}
+                                                ${investment * thisCrypto?.current_price}
                                             </p>
                                         }
                                     </div>
@@ -156,44 +247,6 @@ const BuyCrypto = ({ thisCrypto }) => {
                         }
                     </div>
                 </div>
-            }
-            {!buying &&
-                <div>
-                    <select onChange={e => setDollars(e.target.value)}>
-                        Invest in
-                        <option value="dollar">Dollars</option>
-                        <option value="crypto">Crypto</option>
-                    </select>
-                    <div>
-                        {dollars === "dollar" &&
-                            <form>
-                                <label>Amount
-                                    <input
-                                        type="number"
-                                        min="0"
-                                        max={cashBalance}
-                                        value={investment}
-                                        onChange={e => setInvestment(e.target.value)}
-                                        required
-                                    />
-                                </label>
-                                <label>Est. Quantity
-                                    <input
-                                        type="number"
-                                        value={investment / thisCrypto.current_price}
-                                    />
-                                </label>
-                                <button
-                                    type="submit"
-                                >
-                                    Submit
-                                </button>
-
-                            </form>
-                        }
-                    </div>
-                </div>
-            }
         </div>
     )
 }
