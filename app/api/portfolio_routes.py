@@ -1,5 +1,5 @@
 from flask import Blueprint
-from app.models import db, User, Portfolio
+from app.models import db, Portfolio
 from app.forms.add_portfolio import AddPortfolioForm
 
 portfolio_routes = Blueprint('portfolio', __name__)

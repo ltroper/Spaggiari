@@ -1,17 +1,12 @@
-import { all } from "express/lib/application";
-import React, { useState } from "react";
+import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 import './portfolio.css'
+import Watchlist from "./Watchlist";
 
 const CryptoPortfolio = ({ cryptoObj, cryptoObjPricePaid }) => {
 
     const allCryptos = useSelector(state => state.crypto)
-
-    console.log(cryptoObjPricePaid)
-
-
-
 
 
 
@@ -43,6 +38,7 @@ const CryptoPortfolio = ({ cryptoObj, cryptoObjPricePaid }) => {
                 ))
                 }
             </div>
+            <Watchlist />
         </div>
     )
 }
