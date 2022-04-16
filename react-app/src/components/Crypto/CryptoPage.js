@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 import BuyCrypto from "./BuyCrypto";
+import AddCryptoToList from "./AddCryptoToList";
 
 const CryptoPage = () => {
 
@@ -17,6 +18,7 @@ const CryptoPage = () => {
             <h1>{thisCrypto?.name}</h1>
             <h2>${thisCrypto?.current_price}</h2>
             <BuyCrypto thisCrypto={thisCrypto}/>
+            <AddCryptoToList thisCrypto={thisCrypto}/>
         </div>
     )
 }

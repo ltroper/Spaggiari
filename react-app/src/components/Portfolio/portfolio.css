@@ -62,13 +62,20 @@
     grid-template-columns: 1fr 1fr 1fr;
 }
 
+.portfolio-individual-coin-container:hover {
+    background-color: rgb(100, 100, 100);
+    cursor: pointer;
+}
+
 .portfolio-individual-coin-left {
     grid-area: a;
     padding-left: 1.5rem;
+    margin-top: 0.5rem;
 }
 
 .portfolio-individual-coin-right {
     grid-area: c;
+    margin-top: 0.5rem;
 }
 
 .small-crypto-symbol {
@@ -112,4 +119,12 @@
 
 .portfolio-individual-watchlist-right {
     grid-area: b;
+}
+
+.arrow-sign{
+    z-index: 1;
+    color: antiquewhite;
+    height: 15px;
+    width: 15px;
+    border: 1px solid rgb(255, 0, 0);
 }
