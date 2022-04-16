@@ -43,9 +43,6 @@ const portfolioReducer = (state = initialState, action) => {
         case GET_PORTFOLIO:
             newState = {};
             newState = action.portfolio.portfolios
-            // (action.portfolio.portfolios).forEach(element => {
-            //     newState[element.crypto_id] = element.quantity
-            // });
             return newState;
 
         case ADD_TO_PORTFOLIO:

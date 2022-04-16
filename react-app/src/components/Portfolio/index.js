@@ -14,7 +14,6 @@ const Portfolio = () => {
     const dispatch = useDispatch()
 
     useEffect(() => {
-        console.log("hello")
         dispatch(getPortfolioThunk(id));
     }, [dispatch]);
 
