@@ -28,6 +28,12 @@
     border: 1px solid rgb(146, 146, 146);
 }
 
+.add-watchlist-title {
+    color: antiquewhite;
+    text-align: center;
+    font-weight: 400;
+}
+
 .individual-list-container {
     border-bottom: 1px solid rgba(146, 146, 146, 0.1);
     width: 100%;

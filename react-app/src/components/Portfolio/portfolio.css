@@ -101,7 +101,7 @@
 }
 
 .plus-sign:hover{
-    color: orange;
+    color: orangered;
     cursor: pointer;
 }
 
@@ -136,6 +136,22 @@
 }
 
 .arrow-down:hover {
-    border-color: orange;
+    border-color: orangered;
     cursor: pointer;
+}
+
+.add-cash-container {
+    display: flex;
+    height: 2em;
+    align-items: center;
+    justify-content: space-between;
+    font-size: small;
+}
+
+.add-cash-left-container {
+    display: flex;
+}
+
+.add-cash-total-cash {
+    margin-left: 1rem;
 }

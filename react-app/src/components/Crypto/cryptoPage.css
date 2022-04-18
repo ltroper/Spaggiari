@@ -1,3 +1,99 @@
+.right-container-crypto {
+    grid-area: c;
+    position: sticky;
+    color: antiquewhite;
+    background-color: rgb(74, 74, 74);
+    margin-top: 1rem;
+    margin-right: 2rem;
+    height: 24rem;
+    border-radius: 0.2rem;
+    border: 1px solid rgb(146, 146, 146);
+
+}
+
+.specific-crypto-header {
+    padding-left: 1.5rem;
+    height: 2.9rem;
+    border-bottom: 1px solid rgb(146, 146, 146);
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.buy-sell-button {
+    border: transparent;
+    background: transparent;
+    font-size: large;
+}
+
 .buy-sell-buttons-active {
-    background-color: orange;
+    color: orangered;
+}
+
+.invest-in-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1.5rem 0 1.5rem;
+    font-size: small;
+    margin-bottom: 0.4rem;
+}
+
+.buy-crypto-select-menu {
+    height: 2.3rem;
+    width: 8rem;
+    background: transparent;
+    color: antiquewhite;
+    border-radius: 2px;
+}
+
+.buy-crypto-input-menu{
+    height: 2.1rem;
+    width: 7.74rem;
+    background-color: rgb(146, 146, 146);
+    color: antiquewhite;
+    border: none;
+    border-radius: 2px;
+}
+
+.amount-container {
+    padding-bottom: 1rem;
+}
+
+.amount-container-border {
+    margin-top: 0.5rem;
+    margin-left: 1.2rem;
+    width: 85%;
+    border-bottom: 1px solid rgba(146, 146, 146, 0.5);
+}
+
+.estimated-label {
+    font-weight: 600;
+}
+
+.buy-crypto-button-container {
+    display: flex;
+    justify-content: center;
+}
+
+.buy-crypto-button {
+    margin-top: 3rem;
+    width: 80%;
+    height: 3rem;
+    background-color: orangered;
+    color: black;
+}
+
+.add-to-list-button-container{
+    display: flex;
+    justify-content: center;
+    margin-top: 6rem;
+}
+
+.add-to-list-button {
+    width: 80%;
+    height: 3rem;
+    border: orangered 1px solid;
+    color: orangered;
+    background-color: transparent;
 }

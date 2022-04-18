@@ -59,19 +59,24 @@ function AddCryptoToList({ thisCrypto }) {
 
   return (
     <>
-      <button
-        onClick={() => setShowModal(true)}>
-        Add To List</button>
+      <div className='add-to-list-button-container'>
+        <button
+          className='add-to-list-button'
+          onClick={() => setShowModal(true)}>
+          Add To List</button>
+      </div>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
+          <h4 className='add-watchlist-title'>Add {thisCrypto.name} to one of your watchlists</h4>
           {
             watchlistArr?.map(([watchlist_id, listName]) => (
               !(thisCryptoInWatchList.includes(+watchlist_id)) && (
-              <div className='individual-list-container'>
-                <button className='individual-list-name' onClick={e => dispatch(addWatchCryptoThunk({ crypto_id: thisCrypto?.id, watchlist_id }))}>
-                  {listName}
-                </button>
-              </div>)
+                <div className='individual-list-container'>
+                  <button className='individual-list-name'
+                    onClick={e => dispatch(addWatchCryptoThunk({ crypto_id: thisCrypto?.id, watchlist_id }))}>
+                    {listName}
+                  </button>
+                </div>)
             ))
           }
         </Modal>
