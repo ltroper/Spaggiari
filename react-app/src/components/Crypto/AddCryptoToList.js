@@ -21,14 +21,17 @@ function AddCryptoToList({ thisCrypto }) {
   let cryptoInWatchObj = {}
 
   watchCryptoArr.forEach(element => {
-    console.log(element.crypto_id, element.watchlist_id)
-    if (cryptoInWatchObj[element.crypto_id] === null) {
-      cryptoInWatchObj[element.crypto_id] = element.watchlist_id
-    }
-    else {
-      cryptoInWatchObj[element.crypto_id] = [(cryptoInWatchObj[element.crypto_id]), element.watchlist_id]
-    }
+    cryptoInWatchObj[element.crypto_id] = [(cryptoInWatchObj[element.crypto_id]), element.watchlist_id]
+
   })
+  // watchCryptoArr.forEach(element => {
+  //   if (cryptoInWatchObj[element.crypto_id] === null) {
+  //     cryptoInWatchObj[element.crypto_id] = element.watchlist_id
+  //   }
+  //   else {
+  //     cryptoInWatchObj[element.crypto_id] = [(cryptoInWatchObj[element.crypto_id]), element.watchlist_id]
+  //   }
+  // })
 
   console.log(watchCryptoArr)
   console.log(cryptoInWatchObj)

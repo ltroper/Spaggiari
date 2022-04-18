@@ -19,14 +19,14 @@ img {
     height: 100vh;
 }
 
-h2 {
+.log-in-title {
     margin-top: 1.3rem;
     margin-bottom: 2.5rem;
     font-size: 1.3rem;
     font-weight: 400;
 }
 
-button {
+.log-in-button {
     font-family: inherit;
     font-size: 100%;
     height: 2.8rem;
@@ -43,7 +43,7 @@ button {
     margin-top: 3.2rem;
 }
 
-input {
+.login-input-fields {
     font-family: inherit;
     font-size: 100%;
     width: 26.4rem;
@@ -58,17 +58,17 @@ input {
     border: 1px solid rgba(133, 133, 133, 0.2);
 }
 
-input:hover {
+.login-input-fields:hover {
     border: 1px solid rgba(133, 133, 133, 0.6);
     transition: border 0.2s;
 }
 
-input:focus {
+.login-input-fields:focus {
     border: none;
     outline: 1px solid rgb(0, 210, 0);
 }
 
-label {
+.login-label {
     font-size: small;
 }
 

@@ -39,7 +39,7 @@ const LoginForm = () => {
         <img src='https://wealthofgeeks.com/wp-content/uploads/2021/08/1146589_BestFinancialPodcasts_Option1_080621.jpg' />
       </div>
       <div className='login-right'>
-        <h2>Log in to Spaggiari</h2>
+        <h2 className='log-in-title'>Log in to Spaggiari</h2>
         <form onSubmit={onLogin}>
           <div>
             {errors.map((error, ind) => (
@@ -47,8 +47,9 @@ const LoginForm = () => {
             ))}
           </div>
           <div>
-            <label htmlFor='email'>Email</label>
+            <label className='login-label' htmlFor='email'>Email</label>
             <input
+              className='login-input-fields'
               name='email'
               type='text'
               value={email}
@@ -56,25 +57,28 @@ const LoginForm = () => {
             />
           </div>
           <div>
-            <label htmlFor='password'>Password</label>
+            <label className='login-label' htmlFor='password'>Password</label>
             <input
+              className='login-input-fields'
               name='password'
               type='password'
               value={password}
               onChange={updatePassword}
             />
-            <button type='submit'>Log in</button>
+            <button className='log-in-button' type='submit'>Log in</button>
           </div>
         </form>
         <div className='create-new-account'>
           <p className='not-in-spaggiari'>Not in Spaggiari?</p>
           <NavLink
-          to="/sign-up"
-          style={{ textDecoration: "underline",
-          color: "black",
-          fontWeight: "600",
-          textUnderlineOffset: "0.2rem"}}>
-          Create an account</NavLink>
+            to="/sign-up"
+            style={{
+              textDecoration: "underline",
+              color: "black",
+              fontWeight: "600",
+              textUnderlineOffset: "0.2rem"
+            }}>
+            Create an account</NavLink>
         </div>
       </div>
     </div>
