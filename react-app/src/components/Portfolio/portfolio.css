@@ -84,16 +84,27 @@
     margin-top: 0.5rem;
 }
 
-.small-crypto-symbol {
+.small-crypto-symbol-container {
     font-weight: 600;
     font-size: small;
-    margin: 0.4rem 0 0.4rem 0;
+    display: flex;
+}
+
+.small-crypto-symbol {
+    margin: 0.1rem 0 0 0;
+}
+
+.small-crypto-image {
+    height: 1rem;
+    margin: 0 0 0.5rem 0.5rem;
+    width: auto;
+    border-radius: 100%;
 }
 
 .small-crypto-values {
     font-weight: 400;
     font-size: smaller;
-    margin: 0.4rem 0 0.4rem 0;
+    margin: 0rem 0 0.4rem 0;
 }
 
 .list-header {

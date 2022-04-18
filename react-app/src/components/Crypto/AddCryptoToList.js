@@ -75,7 +75,7 @@ function AddCryptoToList({ thisCrypto }) {
           <h4 className='add-watchlist-title'>Add {thisCrypto.name} to one of your watchlists</h4>
           {
             watchlistArr?.map(([watchlist_id, listName]) => (
-              !(thisCryptoInWatchList.includes(+watchlist_id)) && (
+              !(thisCryptoInWatchList?.includes(+watchlist_id)) && (
                 <div className='individual-list-container'>
                   <button className='individual-list-name'
                     onClick={e => dispatch(addWatchCryptoThunk({ crypto_id: thisCrypto?.id, watchlist_id }))}>
@@ -84,10 +84,10 @@ function AddCryptoToList({ thisCrypto }) {
                 </div>)
             ))
           }
-          <h4 className='add-watchlist-title'>Don't see any lists?</h4>
+          <h5 className='add-watchlist-title subtitle'>Don't see any lists?</h5>
           <div className='add-list-from-modal-container'>
             <button
-              className="buy-crypto-button"
+              className="buy-crypto-button add-watchlist-button"
               onClick={e => setNewList(true)}>
               Create a new one</button>
           </div>

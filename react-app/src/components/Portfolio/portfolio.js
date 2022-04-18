@@ -21,10 +21,13 @@ const CryptoPortfolio = ({ cryptoObj, cryptoObjPricePaid }) => {
                     <NavLink
                         to={`/crypto/${key}`}
                         exact={true}
-                        style={{ textDecoration: "none", color: "antiquewhite"}}>
+                        style={{ textDecoration: "none", color: "antiquewhite" }}>
                         <div className="portfolio-individual-coin-container">
                             <div className="portfolio-individual-coin-left">
-                                <p className="small-crypto-symbol">{allCryptos[key]?.symbol.toUpperCase()}</p>
+                                <div className="small-crypto-symbol-container">
+                                    <p className="small-crypto-symbol">{allCryptos[key]?.symbol.toUpperCase()}</p>
+                                    <img className="small-crypto-image" src={allCryptos[key]?.image}/>
+                                </div>
                                 <p className="small-crypto-values">{value.toFixed(5)}</p>
                             </div>
                             <div className="portfolio-individual-coin-right">

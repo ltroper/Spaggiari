@@ -16,7 +16,10 @@ const CryptoPage = () => {
     return (
         <div className="body-portfolio">
             <div className="left-container-portfolio">
-                <h1>{thisCrypto?.name}</h1>
+                <div className="crypto-name-pic-container">
+                    <h1>{thisCrypto?.name}</h1>
+                    <img className="big-crypto-image" src={thisCrypto?.image} />
+                </div>
                 <h2>${thisCrypto?.current_price}</h2>
             </div>
             <div className="right-container-crypto">

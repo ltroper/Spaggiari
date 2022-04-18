@@ -34,6 +34,15 @@
     font-weight: 400;
 }
 
+.subtitle {
+    align-items: flex-end;
+    margin-bottom: 0;
+}
+
+.add-watchlist-button {
+    margin-top: 0.5rem;
+}
+
 .individual-list-container {
     border-bottom: 1px solid rgba(146, 146, 146, 0.1);
     width: 100%;
@@ -54,6 +63,7 @@
     text-align: center;
     margin-top: 0.8rem;
     font-size: large;
+    width: 100%;
 }
 
 .individual-list-name:hover {
