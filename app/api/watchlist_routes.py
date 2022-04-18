@@ -10,6 +10,12 @@ def getWatchlist(id):
     watchlists = Watchlist.query.filter(Watchlist.user_id == id).all()
     return {"watchlists": [watchlist.to_dict() for watchlist in watchlists]}
 
+@watchlist_routes.route('/crypto/<int:id>', methods=["GET"])
+def getWatchCrypto(id):
+    watchCrypto = Watchlist_crypto.query.all()
+    return {"watchCrypto": [watchlist.to_dict() for watchlist in watchCrypto]}
+
+
 
 @watchlist_routes.route('/new', methods=["POST"])
 def newWatchlist():

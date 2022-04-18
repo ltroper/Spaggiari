@@ -201,7 +201,7 @@ const BuyCrypto = ({ thisCrypto }) => {
                                     <div>
                                         {investment > 0 &&
                                             <p>
-                                                {investment / thisCrypto?.current_price}{" "}{thisCrypto?.symbol}
+                                                {(investment / thisCrypto?.current_price).toFixed(5)}{" "}{thisCrypto?.symbol}
                                             </p>
                                         }
                                     </div>
@@ -230,7 +230,7 @@ const BuyCrypto = ({ thisCrypto }) => {
                                     <div>
                                         {investment > 0 &&
                                             <p>
-                                                ${investment * thisCrypto?.current_price}
+                                                ${(investment * thisCrypto?.current_price).toFixed(2)}
                                             </p>
                                         }
                                     </div>
