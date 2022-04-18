@@ -124,10 +124,12 @@
 }
 
 .portfolio-individual-watchlist-container {
+    max-width: 100%;
     display: grid;
     grid-template-areas:
     "a b";
     grid-template-columns: 1fr 1fr;
+    margin-bottom: 1rem;
 }
 
 .portfolio-individual-watchlist-left {
@@ -151,6 +153,7 @@
     width: 0.62rem;
     height: 0.5rem;
     transform: rotate(-45deg);
+    margin-left: 1rem;
 }
 
 .arrow-down:hover {
@@ -212,4 +215,53 @@
     background-color: orangered;
     color: black;
     transition: background-color 0.2s, color 0.2s;
+}
+
+.hidden {
+    display: none;
+    /* animation-name: slide-in;
+    animation-duration: 0.5s; */
+}
+
+/* #watchlist-1 {
+    animation-name: slide-in;
+    animation-duration: 0.5s;
+}
+
+
+@keyframes slide-in {
+    from {
+        margin-top: -100%;
+        opacity: 0;
+    }
+    to {
+        margin-top:0%;
+        opacity: 0.9;
+    }
+} */
+
+
+
+.watchlist-list {
+    height: 2.5rem;
+    margin: 1rem;
+    border-bottom: 1px solid rgba(146, 146, 146, 0.3);
+}
+
+.edit-name-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.edit-name-input {
+    margin: 1rem;
+}
+
+.edit-name-button{
+    margin: 0.5rem 0 0.5rem 1rem
+}
+
+.edit-name-button:hover {
+    background-color: orangered;
+    transition: background-color 0.2s;
 }

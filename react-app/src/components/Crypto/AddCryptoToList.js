@@ -40,7 +40,7 @@ function AddCryptoToList({ thisCrypto }) {
 
 
   const thisCryptoInWatchList = cryptoInWatchObj[thisCrypto?.id]
-  console.log(thisCryptoInWatchList)
+  console.log(cryptoInWatchObj)
 
   async function hanldeSubmit(e) {
     let watchlist = {

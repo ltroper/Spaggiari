@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { NavLink } from "react-router-dom";
 import { useHistory } from "react-router-dom";
-
+import { getWatchCryptoThunk } from '../../store/watchCrypto'
 import { newWatchlistThunk, getWatchlistThunk, deleteWatchlistThunk } from "../../store/watchlist";
+import EditWatchlistName from "./editWatchlistName";
 
 import './portfolio.css'
 
@@ -16,8 +18,29 @@ const Watchlist = () => {
     const userWatchlists = useSelector(state => state.watchlist)
     const watchlistArr = Object.entries(userWatchlists)
 
+    const watchCrypto = useSelector(state => state?.watchCrypto)
+    const watchCryptoArr = Object.values(watchCrypto)
+
+    let cryptoInWatchObj = {}
+
+
+
+
+    watchCryptoArr.forEach(element => {
+        if (cryptoInWatchObj[element.watchlist_id]) {
+            let arr = cryptoInWatchObj[element.watchlist_id];
+            arr.push(element.crypto_id)
+            cryptoInWatchObj[element.watchlist_id] = arr;
+        } else {
+            cryptoInWatchObj[element.watchlist_id] = [element.crypto_id]
+        }
+    })
+
+    const [dropdownId, setDropdownId] = useState({ "id": -1, "open": false })
+    const [selectedWatchList, setSelectedWatchList] = useState([])
     const [addList, setAddList] = useState(false)
     const [watchlistName, setWatchlistName] = useState("")
+
 
     async function hanldeSubmit(e) {
         let watchlist = {
@@ -29,12 +52,54 @@ const Watchlist = () => {
         history.push("/")
     }
 
+
+
+    const toggleWatchlist = id => {
+        console.log(cryptoInWatchObj[id])
+        setSelectedWatchList(cryptoInWatchObj[id])
+        setDropdownId({ "id": id, "open": !dropdownId["open"] })
+
+    }
+
+
+
     useEffect(() => {
         dispatch(getWatchlistThunk(sessionUser.id));
     }, [dispatch]);
 
+    useEffect(() => {
+        dispatch(getWatchCryptoThunk(sessionUser.id))
+    }, [dispatch])
 
-    console.log(userWatchlists)
+    useEffect(() => {
+        if (dropdownId["id"] > 0) {
+            const dropdownNode = document.getElementById(`watchlist-${dropdownId["id"]}`)
+            dropdownNode?.classList.toggle("hidden")
+        }
+    }, [dispatch, selectedWatchList])
+
+
+    const dropDownMenu = (id) => {
+        return (
+            <div id={`watchlist-${id}`} className="hidden">
+                {selectedWatchList.map(name => (
+                    <div className="watchlist-list">
+                        <NavLink
+                        to={`/crypto/${name}`}
+                        exact={true}
+                        style={{ textDecoration: "none", color: "antiquewhite" }}
+                        >
+                            <div>{name.toUpperCase()}</div>
+                        </NavLink>
+                        <button className="edit-delete-buttons">Remove</button>
+                    </div>
+                ))}
+            </div>
+        )
+    }
+
+
+
 
     return (
         <div>
@@ -78,10 +143,13 @@ const Watchlist = () => {
                                 </div>
                                 <div className="portfolio-individual-watchlist-right">
                                     <div className="edit-delete-buttons-cont">
-                                        <button className="edit-delete-buttons">Edit</button>
-                                        <button onClick={e=>dispatch(deleteWatchlistThunk(id))} className="edit-delete-buttons">Delete</button>
+                                        <EditWatchlistName name={name} id={id}/>
+                                        <button onClick={e => dispatch(deleteWatchlistThunk(id))} className="edit-delete-buttons">Delete</button>
                                     </div>
-                                    <span className="arrow-down"></span>
+                                    <span key={id} onClick={() => toggleWatchlist(id)} className="arrow-down"></span>
+                                </div>
+                                <div>
+                                    {dropDownMenu(id)}
                                 </div>
                             </div>
                         ))
