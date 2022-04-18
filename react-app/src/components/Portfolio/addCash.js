@@ -5,7 +5,7 @@ import { updateUserThunk } from '../../store/user';
 import './portfolio.css'
 
 
-const AddCash = ({}) => {
+const AddCash = ({ }) => {
 
     const dispatch = useDispatch()
 
@@ -40,9 +40,12 @@ const AddCash = ({}) => {
     }
 
     return (
-        <div>
-            <h3>Cash Balance:</h3>
-            <h3>${cashBalance.toFixed(2)}</h3>
+        <div className='add-cash-container'>
+            <div className='add-cash-left-container'>
+                <h3>Cash Balance:</h3>
+                <h3 className='add-cash-total-cash'>${cashBalance.toFixed(2)}</h3>
+            </div>
+            <div>
             {!addCash &&
                 <button
                     onClick={e => setAddCash(true)}
@@ -64,9 +67,15 @@ const AddCash = ({}) => {
                     >
                         Submit
                     </button>
+                    <button
+                        onClick={e => setAddCash(false)}
+                    >
+                        Cancel
+                    </button>
 
                 </form>
             }
+            </div>
         </div>
     )
 }

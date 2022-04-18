@@ -35,7 +35,7 @@ const BuyCrypto = ({ thisCrypto }) => {
         cashBalance = sessionUser.cash
     }
 
-    async function handleBuySubmit(e){
+    async function handleBuySubmit(e) {
         e.preventDefault();
         let user = {
             id: sessionUser.id,
@@ -64,7 +64,7 @@ const BuyCrypto = ({ thisCrypto }) => {
 
     }
 
-    async function handleBuySubmitCrypto(e){
+    async function handleBuySubmitCrypto(e) {
         e.preventDefault();
         let user = {
             id: sessionUser.id,
@@ -93,7 +93,7 @@ const BuyCrypto = ({ thisCrypto }) => {
 
     }
 
-    async function handleSellSubmit(e){
+    async function handleSellSubmit(e) {
         e.preventDefault();
 
         let user = {
@@ -122,7 +122,7 @@ const BuyCrypto = ({ thisCrypto }) => {
         history.push("/")
     }
 
-    async function handleSellSubmitCrypto(e){
+    async function handleSellSubmitCrypto(e) {
 
         e.preventDefault();
         let user = {
@@ -175,20 +175,29 @@ const BuyCrypto = ({ thisCrypto }) => {
 
     return (
         <div>
-            <button onClick={e => setBuying(true)} className={"buy-sell-buttons-"+(buying ? "active" : "not")}>Buy {thisCrypto?.symbol}</button>
-            <button onClick={e => setBuying(false)} className={"buy-sell-buttons-"+(buying ? "not" : "active")}>Sell {thisCrypto?.symbol}</button>
-                <div>
-                    <select onChange={e => setDollars(e.target.value)}>
-                        Invest in
+            <div className="specific-crypto-header">
+                <button onClick={e => setBuying(true)} className={"buy-sell-button buy-sell-buttons-" + (buying ? "active" : "not")}>Buy {thisCrypto?.symbol}</button>
+                <button onClick={e => setBuying(false)} className={"buy-sell-button buy-sell-buttons-" + (buying ? "not" : "active")}>Sell {thisCrypto?.symbol}</button>
+            </div>
+            <div>
+                <div className="invest-in-container">
+                    <p>Invest in</p>
+                    <select
+                        className="buy-crypto-select-menu"
+                        onChange={e => setDollars(e.target.value)}>
                         <option value="dollar">Dollars</option>
                         <option value="crypto">Crypto</option>
                     </select>
-                    <div>
-                        {dollars === "dollar" &&
-                            <form onSubmit={buying ? handleBuySubmit : handleSellSubmit}>
-                                <label>Amount
+                </div>
+                <div>
+                    {dollars === "dollar" &&
+                        <form onSubmit={buying ? handleBuySubmit : handleSellSubmit}>
+                            <div className="amount-container">
+                                <label className="invest-in-container">Amount
                                     <input
+                                        className="buy-crypto-input-menu"
                                         type="number"
+                                        step="0.01"
                                         min="0"
                                         max={buying ? cashBalance : cryptoObj[thisCrypto.id] * thisCrypto.current_price}
                                         placeholder="$0.00"
@@ -197,56 +206,62 @@ const BuyCrypto = ({ thisCrypto }) => {
                                         required
                                     />
                                 </label>
-                                <label>Est. Quantity
-                                    <div>
-                                        {investment > 0 &&
-                                            <p>
-                                                {investment / thisCrypto?.current_price}{" "}{thisCrypto?.symbol}
-                                            </p>
-                                        }
-                                    </div>
-                                </label>
+                                <div className="amount-container-border"></div>
+                            </div>
+                            <label className="invest-in-container estimated-label">Est. Quantity
+                                <div>
+                                    {investment > 0 ?
+                                        <p>
+                                            {(investment / thisCrypto?.current_price).toFixed(5)}{" "}{thisCrypto?.symbol}
+                                        </p>
+                                        : 0
+                                    }
+                                </div>
+                            </label>
+                            <div className="buy-crypto-button-container">
                                 <button
                                     type="submit"
+                                    className="buy-crypto-button"
                                 >
                                     Submit
                                 </button>
+                            </div>
 
-                            </form>
-                        }
-                        {dollars === "crypto" &&
-                            <form onSubmit={buying ? handleBuySubmitCrypto : handleSellSubmitCrypto}>
-                                <label>Amount
-                                    <input
-                                        type="number"
-                                        min="0"
-                                        max={buying ? (cashBalance / thisCrypto?.current_price) : cryptoObj[thisCrypto.id]}
-                                        value={investment}
-                                        onChange={e => setInvestment(e.target.value)}
-                                        required
-                                    />
-                                </label>
-                                <label>Est. Dollars
-                                    <div>
-                                        {investment > 0 &&
-                                            <p>
-                                                ${investment * thisCrypto?.current_price}
-                                            </p>
-                                        }
-                                    </div>
-                                </label>
-                                <button
-                                    type="submit"
-                                >
-                                    Submit
-                                </button>
+                        </form>
+                    }
+                    {dollars === "crypto" &&
+                        <form onSubmit={buying ? handleBuySubmitCrypto : handleSellSubmitCrypto}>
+                            <label>Amount
+                                <input
+                                    type="number"
+                                    min="0"
+                                    max={buying ? (cashBalance / thisCrypto?.current_price) : cryptoObj[thisCrypto.id]}
+                                    value={investment}
+                                    onChange={e => setInvestment(e.target.value)}
+                                    required
+                                />
+                            </label>
+                            <label>Est. Dollars
+                                <div>
+                                    {investment > 0 &&
+                                        <p>
+                                            ${(investment * thisCrypto?.current_price).toFixed(2)}
+                                        </p>
+                                    }
+                                </div>
+                            </label>
+                            <button
+                                type="submit"
+                            >
+                                Submit
+                            </button>
 
-                            </form>
+                        </form>
 
 
-                        }
-                    </div>
+                    }
                 </div>
+            </div>
         </div>
     )
 }

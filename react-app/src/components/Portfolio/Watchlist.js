@@ -43,17 +43,27 @@ const Watchlist = () => {
                 {addList &&
                     <div>
                         <form onSubmit={hanldeSubmit}>
-                            <input
-                                type="text"
-                                placeholder="List Name"
-                                value={watchlistName}
-                                onChange={e => setWatchlistName(e.target.value)}
-                            />
-                            <button
-                                type="submit"
-                            >Submit</button>
+                            <div className="add-new-list-container">
+                                <input
+                                    className="add-new-list-input"
+                                    type="text"
+                                    placeholder="List Name"
+                                    value={watchlistName}
+                                    onChange={e => setWatchlistName(e.target.value)}
+                                />
+                            </div>
+                            <div className="add-new-list-container">
+                                <button
+                                    className="add-new-list-submit"
+                                    type="submit"
+                                >Submit
+                                </button>
+                                <button
+                                    onClick={e => setAddList(false)}
+                                >Cancel
+                                </button>
+                            </div>
                         </form>
-                        <button onClick={e => setAddList(false)}>Cancel</button>
                     </div>
                 }
                 <div className="portfolio-crypto-coins-container">
@@ -64,7 +74,7 @@ const Watchlist = () => {
                                     <p>{name}</p>
                                 </div>
                                 <div className="portfolio-individual-watchlist-right">
-                                    <i className="fa-solid fa-arrow-down-to-bracket arrow-sign"></i>
+                                    <span className="arrow-down"></span>
                                 </div>
                             </div>
                         ))

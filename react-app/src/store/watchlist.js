@@ -17,6 +17,7 @@ const newWatchlist = watchlist => {
 }
 
 
+
 export const getWatchlistThunk = id => async dispatch => {
     const res = await fetch(`/api/watchlist/${id}`)
     const data = await res.json()
@@ -34,6 +35,7 @@ export const newWatchlistThunk = watchlist => async dispatch => {
     dispatch(newWatchlist(data))
 }
 
+
 const initialState = {}
 
 
@@ -50,6 +52,7 @@ const watchlistReducer = (state = initialState, action) => {
             newState[action.watchlist.watchlists.id] = action.watchlist.watchlists.name
             return newState
 
+        
         default:
             return state;
     }

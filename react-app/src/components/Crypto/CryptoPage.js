@@ -14,11 +14,15 @@ const CryptoPage = () => {
     const thisCrypto = cryptoObj[cryptoId.cryptoId]
 
     return (
-        <div>
-            <h1>{thisCrypto?.name}</h1>
-            <h2>${thisCrypto?.current_price}</h2>
-            <BuyCrypto thisCrypto={thisCrypto}/>
-            <AddCryptoToList thisCrypto={thisCrypto}/>
+        <div className="body-portfolio">
+            <div className="left-container-portfolio">
+                <h1>{thisCrypto?.name}</h1>
+                <h2>${thisCrypto?.current_price}</h2>
+            </div>
+            <div className="right-container-crypto">
+                <BuyCrypto thisCrypto={thisCrypto} />
+                <AddCryptoToList thisCrypto={thisCrypto} />
+            </div>
         </div>
     )
 }
