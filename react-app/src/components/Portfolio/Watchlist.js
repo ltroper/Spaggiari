@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 
-import { newWatchlistThunk, getWatchlistThunk } from "../../store/watchlist";
+import { newWatchlistThunk, getWatchlistThunk, deleteWatchlistThunk } from "../../store/watchlist";
 
 import './portfolio.css'
 
@@ -14,7 +14,7 @@ const Watchlist = () => {
 
     const sessionUser = useSelector(state => state.session.user);
     const userWatchlists = useSelector(state => state.watchlist)
-    const watchlistArr = Object.values(userWatchlists)
+    const watchlistArr = Object.entries(userWatchlists)
 
     const [addList, setAddList] = useState(false)
     const [watchlistName, setWatchlistName] = useState("")
@@ -32,6 +32,9 @@ const Watchlist = () => {
     useEffect(() => {
         dispatch(getWatchlistThunk(sessionUser.id));
     }, [dispatch]);
+
+
+    console.log(userWatchlists)
 
     return (
         <div>
@@ -68,12 +71,16 @@ const Watchlist = () => {
                 }
                 <div className="portfolio-crypto-coins-container">
                     {
-                        watchlistArr.map(name => (
+                        watchlistArr.map(([id, name]) => (
                             <div className="portfolio-individual-watchlist-container">
                                 <div className="portfolio-individual-watchlist-left">
                                     <p>{name}</p>
                                 </div>
                                 <div className="portfolio-individual-watchlist-right">
+                                    <div className="edit-delete-buttons-cont">
+                                        <button className="edit-delete-buttons">Edit</button>
+                                        <button onClick={e=>dispatch(deleteWatchlistThunk(id))} className="edit-delete-buttons">Delete</button>
+                                    </div>
                                     <span className="arrow-down"></span>
                                 </div>
                             </div>

@@ -107,6 +107,7 @@
 .plus-sign:hover{
     color: orangered;
     cursor: pointer;
+    transition: border-color 0.2s;
 }
 
 .portfolio-individual-watchlist-container {
@@ -142,6 +143,7 @@
 .arrow-down:hover {
     border-color: orangered;
     cursor: pointer;
+    transition: border-color 0.2s;
 }
 
 .add-cash-container {
@@ -180,4 +182,21 @@
 
 .add-new-list-container > button {
     margin: 0.3rem;
+}
+
+.edit-delete-buttons-cont {
+    margin-top: 0.2rem;
+}
+
+.edit-delete-buttons {
+    height: 1rem;
+    width: 4rem;
+    font-weight: 400;
+    font-size: small;
+}
+
+.edit-delete-buttons:hover {
+    background-color: orangered;
+    color: black;
+    transition: background-color 0.2s, color 0.2s;
 }

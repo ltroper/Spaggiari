@@ -16,7 +16,6 @@ def getWatchCrypto(id):
     return {"watchCrypto": [watchlist.to_dict() for watchlist in watchCrypto]}
 
 
-
 @watchlist_routes.route('/new', methods=["POST"])
 def newWatchlist():
     form = NewWatchlistForm()
@@ -40,3 +39,12 @@ def addWatchCrypto():
     db.session.commit()
 
     return watch_crypto.to_dict()
+
+@watchlist_routes.route('/delete/<int:id>', methods=["DELETE"])
+def deleteWatchlist(id):
+    deleted_watchlist = Watchlist.query.filter(Watchlist.id == id).first()
+    Watchlist.query.filter(Watchlist.id == id).delete()
+    db.session.commit()
+    return {"deleted_watchlist": deleted_watchlist.to_dict()}
+
+
