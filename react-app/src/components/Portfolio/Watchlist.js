@@ -64,7 +64,7 @@ const Watchlist = () => {
                                     <p>{name}</p>
                                 </div>
                                 <div className="portfolio-individual-watchlist-right">
-                                    <i className="fa-solid fa-arrow-down-to-bracket arrow-sign"></i>
+                                    <span className="arrow-down"></span>
                                 </div>
                             </div>
                         ))

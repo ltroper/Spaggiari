@@ -20,10 +20,9 @@ function AddCryptoToList({ thisCrypto }) {
 
   let cryptoInWatchObj = {}
 
-  watchCryptoArr.forEach(element => {
-    cryptoInWatchObj[element.crypto_id] = [(cryptoInWatchObj[element.crypto_id]), element.watchlist_id]
-
-  })
+  // watchCryptoArr.forEach(element => {
+  //   cryptoInWatchObj[element.crypto_id] = [(cryptoInWatchObj[element.crypto_id]), element.watchlist_id]
+  // })
   // watchCryptoArr.forEach(element => {
   //   if (cryptoInWatchObj[element.crypto_id] === null) {
   //     cryptoInWatchObj[element.crypto_id] = element.watchlist_id
@@ -33,9 +32,20 @@ function AddCryptoToList({ thisCrypto }) {
   //   }
   // })
 
-  console.log(watchCryptoArr)
-  console.log(cryptoInWatchObj)
 
+  watchCryptoArr.forEach(element => {
+    if (cryptoInWatchObj[element.crypto_id]) {
+      let arr = cryptoInWatchObj[element.crypto_id];
+      arr.push(element.watchlist_id)
+      cryptoInWatchObj[element.crypto_id] = arr;
+    } else {
+      cryptoInWatchObj[element.crypto_id] = [element.watchlist_id]
+    }
+  })
+
+
+  const thisCryptoInWatchList = cryptoInWatchObj[thisCrypto?.id]
+  console.log(thisCryptoInWatchList)
 
   useEffect(() => {
     dispatch(getWatchlistThunk(sessionUser.id));
@@ -56,10 +66,12 @@ function AddCryptoToList({ thisCrypto }) {
         <Modal onClose={() => setShowModal(false)}>
           {
             watchlistArr?.map(([watchlist_id, listName]) => (
-
-              <button onClick={e => dispatch(addWatchCryptoThunk({ crypto_id: thisCrypto?.id, watchlist_id }))}>
-                {listName}
-              </button>
+              !(thisCryptoInWatchList.includes(+watchlist_id)) && (
+              <div className='individual-list-container'>
+                <button className='individual-list-name' onClick={e => dispatch(addWatchCryptoThunk({ crypto_id: thisCrypto?.id, watchlist_id }))}>
+                  {listName}
+                </button>
+              </div>)
             ))
           }
         </Modal>

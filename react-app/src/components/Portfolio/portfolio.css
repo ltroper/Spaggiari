@@ -119,12 +119,23 @@
 
 .portfolio-individual-watchlist-right {
     grid-area: b;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-right: 1.1rem;
+    margin-bottom: 0.6rem;
+
 }
 
-.arrow-sign{
-    z-index: 1;
-    color: antiquewhite;
-    height: 15px;
-    width: 15px;
-    border: 1px solid rgb(255, 0, 0);
+.arrow-down {
+    border-left: 0.3rem solid antiquewhite;
+    border-bottom: 0.3rem solid antiquewhite;
+    width: 0.5rem;
+    height: 0.5rem;
+    transform: rotate(-45deg);
+}
+
+.arrow-down:hover {
+    border-color: orange;
+    cursor: pointer;
 }
