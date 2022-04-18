@@ -56,6 +56,11 @@
     border-radius: 2px;
 }
 
+.buy-crypto-input-menu:focus {
+    outline: green solid 1px;
+
+}
+
 .amount-container {
     padding-bottom: 1rem;
 }

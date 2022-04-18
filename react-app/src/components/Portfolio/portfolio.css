@@ -69,6 +69,8 @@
 .portfolio-individual-coin-container:hover {
     background-color: rgb(100, 100, 100);
     cursor: pointer;
+    transition: background-color 0.3s;
+
 }
 
 .portfolio-individual-coin-left {
@@ -107,7 +109,7 @@
 .plus-sign:hover{
     color: orangered;
     cursor: pointer;
-    transition: border-color 0.2s;
+    transition: color 0.2s;
 }
 
 .portfolio-individual-watchlist-container {
@@ -135,7 +137,7 @@
 .arrow-down {
     border-left: 0.3rem solid antiquewhite;
     border-bottom: 0.3rem solid antiquewhite;
-    width: 0.5rem;
+    width: 0.62rem;
     height: 0.5rem;
     transform: rotate(-45deg);
 }

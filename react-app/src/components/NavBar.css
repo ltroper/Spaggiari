@@ -1,6 +1,55 @@
 .nav-bar-container > ul {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
+    align-items: center;
     padding-bottom: 1em;
-    border-bottom: solid 1px black;
+}
+
+.logo-navbar {
+    height: 2rem;
+    width: auto;
+}
+
+.nav-bar-left {
+    display: flex;
+}
+
+.nav-bar-rigth {
+    margin-right: 3rem;
+}
+
+.logout-button {
+    position: absolute;
+    right: 5rem;
+    top: 1rem
+}
+
+.search-nav-bar-container {
+    margin-left: 3rem;
+}
+
+.search-nav-bar {
+    border: 1px solid rgba(182, 182, 182, 0.3);
+    border-radius: 5px;
+    height: 2rem;
+    width: 29.5rem;
+}
+
+.search-nav-bar:focus {
+    outline: green solid 1px;
+}
+
+.search-nav-bar-crypto {
+    border: 1px solid rgba(182, 182, 182, 0.3);
+    width: 60%;
+    height: 2rem;
+    font-size: large;
+    color: black;
+    padding-top: 0.9rem;
+    padding-left: 0.5rem;
+}
+
+.search-nav-bar-crypto:hover {
+    background-color: rgba(182, 182, 182, 0.3);
+    transition: background-color 0.2s;
 }
