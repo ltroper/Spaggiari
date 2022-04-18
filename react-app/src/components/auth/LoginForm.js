@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 import { Redirect } from 'react-router-dom';
 import { login } from '../../store/session';
 
@@ -35,7 +36,7 @@ const LoginForm = () => {
   return (
     <div className='login-body'>
       <div className='login-left'>
-        <img src='https://wealthofgeeks.com/wp-content/uploads/2021/08/1146589_BestFinancialPodcasts_Option1_080621.jpg'/>
+        <img src='https://wealthofgeeks.com/wp-content/uploads/2021/08/1146589_BestFinancialPodcasts_Option1_080621.jpg' />
       </div>
       <div className='login-right'>
         <h2>Log in to Spaggiari</h2>
@@ -65,6 +66,16 @@ const LoginForm = () => {
             <button type='submit'>Log in</button>
           </div>
         </form>
+        <div className='create-new-account'>
+          <p className='not-in-spaggiari'>Not in Spaggiari?</p>
+          <NavLink
+          to="/sign-up"
+          style={{ textDecoration: "underline",
+          color: "black",
+          fontWeight: "600",
+          textUnderlineOffset: "0.2rem"}}>
+          Create an account</NavLink>
+        </div>
       </div>
     </div>
   );

@@ -12,7 +12,7 @@
 
 .login-right {
     grid-area: b;
-    margin: 3.6em;
+    margin: 3.75em;
 }
 
 img {
@@ -20,7 +20,10 @@ img {
 }
 
 h2 {
+    margin-top: 1.3rem;
     margin-bottom: 2.5rem;
+    font-size: 1.3rem;
+    font-weight: 400;
 }
 
 button {
@@ -63,4 +66,16 @@ input:hover {
 
 label {
     font-size: small;
+}
+
+.create-new-account {
+    display: flex;
+    align-items: center;
+    font-size: small;
+    margin-top: 1rem;
+    margin-right: 0.2rem;
+}
+
+.not-in-spaggiari {
+    margin-right: 0.5rem;
 }
