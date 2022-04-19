@@ -59,3 +59,10 @@ def deleteWatchlist(id):
     Watchlist.query.filter(Watchlist.id == id).delete()
     db.session.commit()
     return {"deleted_watchlist": deleted_watchlist.to_dict()}
+
+@watchlist_routes.route('/crypto/delete/<int:id>', methods=["DELETE"])
+def deleteWatchlistCrypto(id):
+    deleted_watchlist = Watchlist_crypto.query.filter(Watchlist_crypto.id == id).first()
+    Watchlist_crypto.query.filter(Watchlist_crypto.id == id).delete()
+    db.session.commit()
+    return {"deleted_watchlist_crypto": deleted_watchlist.to_dict()}

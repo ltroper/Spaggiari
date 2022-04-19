@@ -149,7 +149,7 @@
 .arrow-down {
     border-left: 0.3rem solid antiquewhite;
     border-bottom: 0.3rem solid antiquewhite;
-    width: 0.62rem;
+    width: 0.61rem;
     height: 0.5rem;
     transform: rotate(-45deg);
     margin-left: 1rem;
@@ -244,8 +244,10 @@
 .watchlist-list {
     height: 2.5rem;
     margin: 1rem;
+    padding-bottom: 0.5rem;
     border-bottom: 1px solid rgba(146, 146, 146, 0.3);
 }
+
 
 .edit-name-form {
     display: flex;
@@ -263,4 +265,8 @@
 .edit-name-button:hover {
     background-color: orangered;
     transition: background-color 0.2s;
+}
+
+.crypto-name-image {
+    display: flex;
 }
