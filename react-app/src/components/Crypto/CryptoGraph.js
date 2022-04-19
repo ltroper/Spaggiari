@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Plot from 'react-plotly.js';
 
@@ -14,14 +14,17 @@ const CrytpoGraph = ({ cryptoProp }) => {
 
     const cryptoData = useSelector(state => state.data)?.prices
 
-    let cryptoDatePrice = []
+    const [cryptoDatePrice, setCryptoDatePrice] = useState([])
 
-    console.log(cryptoData)
+    useEffect(() => {
+        let newArr = []
+        cryptoData?.forEach(element => {
+            let dateObj = (new Date(element[0]))
+            newArr.push([`${dateObj.getMonth() + 1}/${dateObj.getDate()}/${dateObj.getHours()}h`, element[1]])
+        });
+        setCryptoDatePrice(newArr)
+    }, [dispatch, cryptoData])
 
-    cryptoData?.forEach(element => {
-        let dateObj = (new Date(element[0]))
-        cryptoDatePrice.push([`${dateObj.getMonth() + 1}/${dateObj.getDate()}/${dateObj.getHours()}h`, element[1]])
-    });
 
 
     let xArray = []
@@ -62,6 +65,7 @@ const CrytpoGraph = ({ cryptoProp }) => {
                     rows: 1
                 },
                 xaxis: {
+
                     showgrid: false
                 },
                 yaxis: {
