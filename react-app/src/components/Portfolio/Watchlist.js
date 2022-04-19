@@ -65,7 +65,6 @@ const Watchlist = () => {
         dropdownNode.classList.toggle("hidden");
     };
 
-    console.log(cryptoLists)
 
 
     return (

@@ -40,7 +40,6 @@ function AddCryptoToList({ thisCrypto }) {
 
 
   const thisCryptoInWatchList = cryptoInWatchObj[thisCrypto?.id]
-  console.log(cryptoInWatchObj)
 
   async function hanldeSubmit(e) {
     let watchlist = {
@@ -58,7 +57,7 @@ function AddCryptoToList({ thisCrypto }) {
 
   useEffect(() => {
     dispatch(getWatchCryptoThunk(sessionUser.id))
-  }, [dispatch])
+  }, [dispatch, sessionUser.id])
 
 
 

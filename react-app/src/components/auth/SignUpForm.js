@@ -22,7 +22,7 @@ const SignUpForm = () => {
     if (username.length < 4) {
       newErrors.push("Username must be 4 characters or more!");
     }
-    
+
     if (email.length < 4) {
       newErrors.push("Email must be 4 characters or more!");
     }
@@ -88,7 +88,7 @@ const SignUpForm = () => {
             <label className='login-label'>Email</label>
             <input
               className='login-input-fields'
-              type='text'
+              type='email'
               name='email'
               onChange={updateEmail}
               value={email}

@@ -40,6 +40,11 @@
     margin: 1.3rem 0 0 0.3rem;
 }
 
+.graph-container {
+    height: 22rem;
+    width: 44rem;
+}
+
 .buy-sell-button {
     border: transparent;
     background: transparent;
