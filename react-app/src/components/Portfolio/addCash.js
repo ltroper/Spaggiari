@@ -43,7 +43,7 @@ const AddCash = ({ }) => {
         <div className='add-cash-container'>
             <div className='add-cash-left-container'>
                 <h3>Cash Balance:</h3>
-                <h3 className='add-cash-total-cash'>${cashBalance.toFixed(2)}</h3>
+                <h3 className='add-cash-total-cash'>${cashBalance?.toFixed(2)}</h3>
             </div>
             <div>
             {!addCash &&

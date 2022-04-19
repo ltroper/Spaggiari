@@ -42,6 +42,16 @@ img {
     margin-top: 3.2rem;
 }
 
+.bright {
+    margin-left: 1rem;
+}
+
+.log-in-button:hover {
+    background-color: orangered;
+    color: black;
+    transition: color 0.2s, background-color 0.2s;
+}
+
 .login-input-fields {
     font-family: inherit;
     font-size: 100%;

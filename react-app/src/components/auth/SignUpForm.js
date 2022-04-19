@@ -17,15 +17,15 @@ const SignUpForm = () => {
 
     //error validation
     setErrors([])
-
-    if (password === repeatPassword) {
-      const data = await dispatch(signUp(username, email, password));
-      if (data) {
-        setErrors(data)
-      }
-    }
-
     const newErrors = [];
+
+    if (username.length < 4) {
+      newErrors.push("Username must be 4 characters or more!");
+    }
+    
+    if (email.length < 4) {
+      newErrors.push("Email must be 4 characters or more!");
+    }
 
     if (password !== repeatPassword) {
       newErrors.push("Passwords do not match.")
@@ -35,6 +35,16 @@ const SignUpForm = () => {
       setErrors(newErrors)
       return;
     }
+
+    if (password === repeatPassword) {
+      const data = await dispatch(signUp(username, email, password));
+      if (data) {
+        setErrors(data)
+      }
+    }
+
+
+
   };
 
   const updateUsername = (e) => {
@@ -64,11 +74,6 @@ const SignUpForm = () => {
       </div>
       <div className='login-right'>
         <form onSubmit={onSignUp}>
-          <div>
-            {errors.map((error, ind) => (
-              <div key={ind}>{error}</div>
-            ))}
-          </div>
           <div>
             <label className='login-label'>User Name</label>
             <input
@@ -112,6 +117,11 @@ const SignUpForm = () => {
           </div>
           <button className='log-in-button' type='submit'>Sign Up</button>
         </form>
+        <div>
+          {errors.map((error, ind) => (
+            <div className='error' key={ind}>{error}</div>
+          ))}
+        </div>
         <div className='create-new-account'>
           <p className='not-in-spaggiari'>Already have an account?</p>
           <NavLink
