@@ -172,6 +172,11 @@ const BuyCrypto = ({ thisCrypto }) => {
         }
     }
 
+    const toggleAsset = e => {
+        setDollars(e.target.value)
+        setInvestment()
+    }
+
 
     return (
         <div>
@@ -184,7 +189,7 @@ const BuyCrypto = ({ thisCrypto }) => {
                     <p>Invest in</p>
                     <select
                         className="buy-crypto-select-menu"
-                        onChange={e => setDollars(e.target.value)}>
+                        onChange={toggleAsset}>
                         <option value="dollar">Dollars</option>
                         <option value="crypto">Crypto</option>
                     </select>
