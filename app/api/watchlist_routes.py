@@ -40,10 +40,10 @@ def addWatchCrypto():
 
     return watch_crypto.to_dict()
 
-@watchlist_routes.route("/edit", methods=["PUT"])
-def edit_watchlist():
+@watchlist_routes.route("/<int:id>/edit", methods=["PUT"])
+def edit_watchlist(id):
     form = NewWatchlistForm()
-    watchlist = Watchlist.query.get(form.data["id"])
+    watchlist = Watchlist.query.get(id)
     watchlist.name = form.data["name"]
     watchlist.user_id = form.data["user_id"]
 

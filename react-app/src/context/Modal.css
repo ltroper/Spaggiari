@@ -39,6 +39,11 @@
     margin-bottom: 0;
 }
 
+.subsub {
+    margin-top: 0;
+    font-size: x-small;
+}
+
 .add-watchlist-button {
     margin-top: 0.5rem;
 }
@@ -74,4 +79,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.error {
+    color: red;
+    font-size: x-small;
 }

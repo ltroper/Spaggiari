@@ -85,6 +85,7 @@ function AddCryptoToList({ thisCrypto }) {
             ))
           }
           <h5 className='add-watchlist-title subtitle'>Don't see any lists?</h5>
+          <h5 className='add-watchlist-title subsub'>This asset may be in all of your lists already</h5>
           <div className='add-list-from-modal-container'>
             <button
               className="buy-crypto-button add-watchlist-button"

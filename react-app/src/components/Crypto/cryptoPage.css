@@ -11,8 +11,18 @@
 
 }
 
+.crypto-page-big-name {
+    margin-bottom: 0;
+    font-weight: 400;
+}
+
 .crypto-name-pic-container {
     display: flex;
+}
+
+.crypto-page-big-price {
+    margin-top: 0.2rem;
+    font-weight: 400;
 }
 
 .specific-crypto-header {
@@ -27,7 +37,7 @@
 .big-crypto-image {
     height: 2.5rem;
     border-radius: 100%;
-    margin: 0.9rem 0 0 0.5rem;
+    margin: 1.3rem 0 0 0.3rem;
 }
 
 .buy-sell-button {

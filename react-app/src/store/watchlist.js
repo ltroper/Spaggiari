@@ -52,7 +52,7 @@ export const newWatchlistThunk = watchlist => async dispatch => {
 }
 
 export const editWatchlistThunk = watchlist => async dispatch => {
-    const res = await fetch(`/api/watchlist/edit`, {
+    const res = await fetch(`/api/watchlist/${watchlist.id}/edit`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(watchlist),
@@ -92,7 +92,8 @@ const watchlistReducer = (state = initialState, action) => {
             return newState
 
         case EDIT_WATCHLIST:
-            newState[action.watchlist.watchlists.id] = action.watchlist.watchlists.name
+            console.log(action)
+            newState[action.watchlist.id] = action.watchlist.name
             return newState
 
         case DELETE_WATCHLIST:

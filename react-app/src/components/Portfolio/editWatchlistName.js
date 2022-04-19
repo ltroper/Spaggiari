@@ -12,6 +12,8 @@ function EditWatchlistName({ name, id }) {
 
     const [showModal, setShowModal] = useState(false);
     const [watchlistName, setWatchlistName] = useState(name)
+    const [errors, setErrors] = useState([]);
+
 
 
     const sessionUser = useSelector(state => state.session.user);
@@ -30,7 +32,21 @@ function EditWatchlistName({ name, id }) {
             name: watchlistName,
             user_id: sessionUser.id
         }
+
+        setErrors([]);
+
+        const newErrors = [];
+
+        if (watchlist.name.length < 4) {
+            newErrors.push("! Name must be 4 characters or more");
+        }
+
+        if (newErrors.length > 0) {
+            setErrors(newErrors);
+            return;
+        }
         dispatch(editWatchlistThunk(watchlist))
+        setShowModal(false)
     }
 
     return (
@@ -59,6 +75,15 @@ function EditWatchlistName({ name, id }) {
                         className='edit-name-button'
                         onClick={() => setShowModal(false)}
                     >Cancel</button>
+                    <div className="error-container">
+                        <ul>
+                            {errors.map(err => (
+                                <li key={err} className="error">
+                                    {err}
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
                 </Modal>
             )}
         </>
