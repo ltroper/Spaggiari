@@ -11,6 +11,20 @@
 
 }
 
+.crypto-page-big-name {
+    margin-bottom: 0;
+    font-weight: 400;
+}
+
+.crypto-name-pic-container {
+    display: flex;
+}
+
+.crypto-page-big-price {
+    margin-top: 0.2rem;
+    font-weight: 400;
+}
+
 .specific-crypto-header {
     padding-left: 1.5rem;
     height: 2.9rem;
@@ -18,6 +32,12 @@
     display: flex;
     align-items: center;
     margin-bottom: 1.5rem;
+}
+
+.big-crypto-image {
+    height: 2.5rem;
+    border-radius: 100%;
+    margin: 1.3rem 0 0 0.3rem;
 }
 
 .buy-sell-button {
@@ -54,6 +74,11 @@
     color: antiquewhite;
     border: none;
     border-radius: 2px;
+}
+
+.buy-crypto-input-menu:focus {
+    outline: green solid 1px;
+
 }
 
 .amount-container {

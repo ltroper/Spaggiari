@@ -13,6 +13,14 @@ const LoginForm = () => {
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
 
+  const handleSubmitDemo = async (e) => {
+    e.preventDefault();
+    const demoEmail = "demo@aa.io"
+    const demoPassword = "password"
+    await dispatch(login(demoEmail, demoPassword)
+    )
+  };
+
   const onLogin = async (e) => {
     e.preventDefault();
     const data = await dispatch(login(email, password));
@@ -66,6 +74,7 @@ const LoginForm = () => {
               onChange={updatePassword}
             />
             <button className='log-in-button' type='submit'>Log in</button>
+            <button className='log-in-button bright' onClick={handleSubmitDemo}>Demo</button>
           </div>
         </form>
         <div className='create-new-account'>
