@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Plot from 'react-plotly.js';
+import { set } from 'express/lib/application';
 
 const PortfolioGraph = ( { cryptoObj } ) => {
 
@@ -15,10 +16,11 @@ const PortfolioGraph = ( { cryptoObj } ) => {
 
 
         for (let [name, amount] of Object.entries(cryptoObj)) {
+
             let res = await fetch(`https://api.coingecko.com/api/v3/coins/${name}/market_chart/range?vs_currency=usd&from=${aMonthAgo}&to=${today}`)
             const cryptoHistory = await res.json();
 
-            const cryptoPrices = cryptoHistory.prices.map(value => {
+            const cryptoPrices = await cryptoHistory.prices.map(value => {
                 return [value[0], value[1]*amount]
             })
             historyArr.push(cryptoPrices)
@@ -30,8 +32,7 @@ const PortfolioGraph = ( { cryptoObj } ) => {
 
     }
 
-    const whatever = constructPortfolioHistory(cryptoObj)
-    console.log(whatever)
+
 
     // useEffect(() => {
     //     let newArr = []

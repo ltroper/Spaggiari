@@ -23,9 +23,7 @@ const CryptoPage = () => {
                     <img className="big-crypto-image" src={thisCrypto?.image} />
                 </div>
                 <h2 className="crypto-page-big-price">${thisCrypto?.current_price}</h2>
-                <div className="graph-container">
-                    <CrytpoGraph cryptoProp={cryptoProp} />
-                </div>
+                <CrytpoGraph cryptoProp={cryptoProp} />
             </div>
             <div className="right-container-crypto">
                 <BuyCrypto thisCrypto={thisCrypto} />

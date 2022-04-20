@@ -17,7 +17,7 @@ const rootReducer = combineReducers({
   transaction,
   watchlist,
   watchCrypto,
-  data
+  data,
 });
 
 

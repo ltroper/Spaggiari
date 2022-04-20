@@ -8,9 +8,9 @@ const getAllData = data => {
     }
 }
 
-export const getAllDataThunk = (cryptoId) => async dispatch => {
+export const getAllDataThunk = (cryptoId, timeFrame) => async dispatch => {
     const today = ((new Date().getTime()) / 1000) - 3600
-    const aMonthAgo = (today - 2678400) - 3600
+    const aMonthAgo = (today - timeFrame) - 3600
 
     const res = await fetch(`https://api.coingecko.com/api/v3/coins/${cryptoId}/market_chart/range?vs_currency=usd&from=${aMonthAgo}&to=${today}`)
     const cryptoData = await res.json();
