@@ -28,14 +28,19 @@
 
 .right-container-portfolio {
     grid-area: c;
-    position: sticky;
     color: antiquewhite;
+    position: sticky;
     background-color: rgb(74, 74, 74);
     margin-top: 1rem;
     margin-right: 2rem;
     height: 31rem;
     border-radius: 0.2rem;
     border: 1px solid rgb(146, 146, 146);
+
+}
+
+.right-container-portfolio > div {
+    position: sticky;
     overflow: scroll;
 }
 
@@ -284,4 +289,50 @@
 
 .add-cash-buttons {
     margin: 0.25rem;
+}
+
+.individual-news-container {
+    max-width: 100%;
+    height: 7rem;
+    display: grid;
+    grid-template-areas:
+    "a b";
+    grid-template-columns: 1fr 4fr;
+    border-bottom: 1px solid rgb(146, 146, 146);
+    padding-bottom: 1rem;
+    padding-top: 0.6rem;
+    overflow: hidden;
+}
+
+.individual-news-container:hover {
+    background-color: rgba(146, 146, 146, 0.2);
+    transition: background-color 0.3s;
+}
+
+.news-left {
+    grid-area: a;
+}
+
+.news-right {
+    grid-area: b;
+}
+
+.news-image {
+    height: 7.5rem;
+    width: 10rem;
+    margin-bottom: 0.5rem;
+}
+
+.news-title {
+    color: black;
+    font-weight: 400;
+    font-size: medium;
+    margin: 0.4rem;
+}
+
+.news-description {
+    color: black;
+    font-weight: 400;
+    font-size: 0.7rem;
+    margin: 0.4rem;
 }

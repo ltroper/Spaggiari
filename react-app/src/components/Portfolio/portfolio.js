@@ -12,7 +12,7 @@ const CryptoPortfolio = ({ cryptoObj, cryptoObjPricePaid }) => {
 
 
     return (
-        <div>
+        <div >
             <div className="portfolio-crypto-header-container">
                 <h4 className="portfolio-crypto-header">Cryptos</h4>
             </div>

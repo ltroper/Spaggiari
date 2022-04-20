@@ -8,6 +8,7 @@ import transaction from './transaction'
 import watchlist from './watchlist';
 import watchCrypto from './watchCrypto'
 import data from './cryptoData'
+import news from './news'
 
 const rootReducer = combineReducers({
   session,
@@ -18,6 +19,7 @@ const rootReducer = combineReducers({
   watchlist,
   watchCrypto,
   data,
+  news
 });
 
 

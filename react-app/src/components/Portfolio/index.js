@@ -6,6 +6,7 @@ import AddCash from "./addCash";
 import CryptoPortfolio from "./portfolio";
 import PortfolioGraph from "./PortfolioGraph";
 import { getPortfolioThunk } from "../../store/portfolio";
+import { getAllNewsThunk } from "../../store/news";
 
 import './portfolio.css'
 
@@ -18,9 +19,17 @@ const Portfolio = () => {
         dispatch(getPortfolioThunk(id));
     }, [dispatch]);
 
+    useEffect(() => {
+        dispatch(getAllNewsThunk("crypto"))
+    }, [dispatch])
+
     const sessionUser = useSelector(state => state.session.user);
     const cryptoArr = useSelector(state => state.portfolio);
     const allCryptos = useSelector(state => state.crypto)
+    const allNews = useSelector(state => state.news)
+    const allNewsArr = Object.values(allNews)
+
+    const smolNewsArr = allNewsArr.slice(0, 8)
 
 
     const id = sessionUser.id
@@ -69,8 +78,23 @@ const Portfolio = () => {
                     {" "}
                     ({totalCryptoMoney === 0 ? "0" : netPercentage.toFixed(2)}%)
                 </p>
-                <PortfolioGraph cryptoObj={cryptoObj}/>
+                <PortfolioGraph cryptoObj={cryptoObj} />
                 <AddCash />
+                <div>
+                    {smolNewsArr?.map(news => (
+                        <a href={news.url}>
+                            <div className="individual-news-container">
+                                <div className="news-left">
+                                    <img className="news-image" src={news.urlToImage} />
+                                </div>
+                                <div className="news-right">
+                                    <h3 className="news-title">{news.title}</h3>
+                                    <p className="news-description">{news.description}</p>
+                                </div>
+                            </div>
+                        </a>
+                    ))}
+                </div>
             </div>
             <div className="right-container-portfolio">
                 <CryptoPortfolio cryptoObj={cryptoObj} cryptoObjPricePaid={cryptoObjPricePaid} />
