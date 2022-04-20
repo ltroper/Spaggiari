@@ -1,6 +1,7 @@
 .right-container-crypto {
     grid-area: c;
     position: sticky;
+    top: 6rem;
     color: antiquewhite;
     background-color: rgb(74, 74, 74);
     margin-top: 1rem;

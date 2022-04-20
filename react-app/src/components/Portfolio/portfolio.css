@@ -36,12 +36,9 @@
     height: 31rem;
     border-radius: 0.2rem;
     border: 1px solid rgb(146, 146, 146);
-
-}
-
-.right-container-portfolio > div {
-    position: sticky;
+    top: 6rem;
     overflow: scroll;
+
 }
 
 ::-webkit-scrollbar {
@@ -172,7 +169,7 @@
     align-items: center;
     justify-content: space-between;
     font-size: small;
-    margin: 1rem;
+    margin: 2rem 1rem 4rem 1rem;
 }
 
 .add-cash-left-container {
