@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import AddCash from "./addCash";
 import CryptoPortfolio from "./portfolio";
+import PortfolioGraph from "./PortfolioGraph";
 import { getPortfolioThunk } from "../../store/portfolio";
 
 import './portfolio.css'
@@ -59,7 +60,6 @@ const Portfolio = () => {
 
 
 
-
     return (
         <div className="body-portfolio">
             <div className="left-container-portfolio">
@@ -67,8 +67,9 @@ const Portfolio = () => {
                 <p className={"net-percentage-" + (netPercentage > 0 ? "positive" : "negative")}>
                     ${netProfit.toFixed(2)}
                     {" "}
-                    ({netPercentage.toFixed(2)}%)
+                    ({totalCryptoMoney === 0 ? "0" : netPercentage.toFixed(2)}%)
                 </p>
+                <PortfolioGraph cryptoObj={cryptoObj}/>
                 <AddCash />
             </div>
             <div className="right-container-portfolio">

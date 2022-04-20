@@ -24,11 +24,11 @@ def user(id):
 def addCash():
     form = AddCashForm()
     user = User.query.get(form.data["id"])
-    user.cash += form.data["cash"]
+    if user.cash > 0:
+        user.cash += form.data["cash"]
+    else:
+        user.cash = form.data["cash"]
 
     db.session.add(user)
     db.session.commit()
     return user.to_dict()
-
-
-

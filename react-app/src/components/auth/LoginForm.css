@@ -21,9 +21,15 @@ img {
 
 .log-in-title {
     margin-top: 1.3rem;
-    margin-bottom: 2.5rem;
     font-size: 1.3rem;
     font-weight: 400;
+    margin-bottom: 0rem;
+}
+
+.log-in-description {
+    font-weight: 400;
+    margin: 0.2rem 0 2.5rem 0;
+    font-size: small;
 }
 
 .log-in-button {
@@ -47,7 +53,7 @@ img {
 }
 
 .log-in-button:hover {
-    background-color: orangered;
+    background-color: rgba(255, 69, 0, 0.5);
     color: black;
     transition: color 0.2s, background-color 0.2s;
 }

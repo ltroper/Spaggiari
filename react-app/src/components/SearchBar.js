@@ -14,8 +14,6 @@ const getFilteredSearch = (search, cryptoArray) => {
 
 const SearchBar = () => {
 
-    const sessionUser = useSelector(state => state.session.user);
-
     const cryptoObj = useSelector(state => state.crypto)
     const cryptoArray = Object.values(cryptoObj)
 

@@ -16,7 +16,7 @@
 
 .net-percentage-positive {
     margin-top: 0%;
-    color: green;
+    color: rgb(0, 200, 0);
     font-size: 0.9rem;
 }
 
@@ -118,7 +118,7 @@
 }
 
 .plus-sign:hover{
-    color: orangered;
+    color: rgb(255, 69, 0);
     cursor: pointer;
     transition: color 0.2s;
 }
@@ -149,14 +149,14 @@
 .arrow-down {
     border-left: 0.3rem solid antiquewhite;
     border-bottom: 0.3rem solid antiquewhite;
-    width: 0.62rem;
+    width: 0.61rem;
     height: 0.5rem;
     transform: rotate(-45deg);
     margin-left: 1rem;
 }
 
 .arrow-down:hover {
-    border-color: orangered;
+    border-color: rgb(255, 69, 0);
     cursor: pointer;
     transition: border-color 0.2s;
 }
@@ -167,6 +167,7 @@
     align-items: center;
     justify-content: space-between;
     font-size: small;
+    margin: 1rem;
 }
 
 .add-cash-left-container {
@@ -191,8 +192,12 @@
 }
 
 .add-new-list-submit {
-    background-color: orangered;
+    background-color: rgb(255, 69, 0);
     color: black;
+}
+
+.add-new-list-submit:hover {
+    background-color: rgb(255, 69, 0);
 }
 
 .add-new-list-container > button {
@@ -211,7 +216,7 @@
 }
 
 .edit-delete-buttons:hover {
-    background-color: orangered;
+    background-color: rgb(255, 69, 0);
     color: black;
     transition: background-color 0.2s, color 0.2s;
 }
@@ -244,8 +249,10 @@
 .watchlist-list {
     height: 2.5rem;
     margin: 1rem;
+    padding-bottom: 0.5rem;
     border-bottom: 1px solid rgba(146, 146, 146, 0.3);
 }
+
 
 .edit-name-form {
     display: flex;
@@ -261,6 +268,20 @@
 }
 
 .edit-name-button:hover {
-    background-color: orangered;
+    background-color: rgb(255, 69, 0);
     transition: background-color 0.2s;
+}
+
+.crypto-name-image {
+    display: flex;
+}
+
+.add-cash-input {
+    margin-right: 0.25rem;
+    height: 1.5rem;
+    width: 10rem;
+}
+
+.add-cash-buttons {
+    margin: 0.25rem;
 }

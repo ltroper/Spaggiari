@@ -48,6 +48,7 @@ const LoginForm = () => {
       </div>
       <div className='login-right'>
         <h2 className='log-in-title'>Log in to Spaggiari</h2>
+        <h4 className='log-in-description'>Buying and selling crypto at your fingertips</h4>
         <form onSubmit={onLogin}>
           <div>
             {errors.map((error, ind) => (
