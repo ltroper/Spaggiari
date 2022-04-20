@@ -1,0 +1,87 @@
+#modal {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#modal-background {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+#modal-content {
+    position: absolute;
+    background-color: rgb(33, 33, 33);
+    height: 27rem;
+    width: 17rem;
+    border-radius: 20px;
+    border-radius: 5px;
+    border: 1px solid rgb(146, 146, 146);
+}
+
+.add-watchlist-title {
+    color: antiquewhite;
+    text-align: center;
+    font-weight: 400;
+}
+
+.subtitle {
+    align-items: flex-end;
+    margin-bottom: 0;
+}
+
+.subsub {
+    margin-top: 0;
+    font-size: x-small;
+}
+
+.add-watchlist-button {
+    margin-top: 0.5rem;
+}
+
+.individual-list-container {
+    border-bottom: 1px solid rgba(146, 146, 146, 0.1);
+    width: 100%;
+    height: 3rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.individual-list-container:hover {
+    background-color: rgb(45, 45, 45);
+    cursor: pointer;
+}
+
+.individual-list-name {
+    background-color: transparent;
+    border: none;
+    color: antiquewhite;
+    text-align: center;
+    margin-top: 0.8rem;
+    font-size: large;
+    width: 100%;
+}
+
+.individual-list-name:hover {
+    cursor: pointer;
+}
+
+.add-list-from-modal-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.error {
+    color: red;
+    font-size: x-small;
+}

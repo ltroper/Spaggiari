@@ -5,13 +5,19 @@ import crypto from './crypto'
 import user from './user'
 import portfolio from './portfolio'
 import transaction from './transaction'
+import watchlist from './watchlist';
+import watchCrypto from './watchCrypto'
+import data from './cryptoData'
 
 const rootReducer = combineReducers({
   session,
   crypto,
   user,
   portfolio,
-  transaction
+  transaction,
+  watchlist,
+  watchCrypto,
+  data,
 });
 
 

@@ -2,12 +2,15 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { updateUserThunk } from '../../store/user';
 
-const AddCash = () => {
+import './portfolio.css'
+
+
+const AddCash = ({ }) => {
 
     const dispatch = useDispatch()
 
     const sessionUser = useSelector(state => state.session.user);
-    const userWithCash = useSelector(state => state.user[1]?.cash)
+    const userWithCash = useSelector(state => state.user[sessionUser.id]?.cash)
 
     let cashBalance
 
@@ -36,34 +39,48 @@ const AddCash = () => {
 
     }
 
-    return (
-        <div>
-            <h3>Cash Balance:</h3>
-            <h3>{cashBalance}</h3>
-            {!addCash &&
-                <button
-                    onClick={e => setAddCash(true)}
-                >Add Cash</button>}
-            {addCash &&
-                <form onSubmit={handleSubmit}>
-                    <label>Enter amount in USD
-                        <input
-                            type="number"
-                            min="0"
-                            max="10000"
-                            value={deposit}
-                            onChange={e => setDeposit(e.target.value)}
-                            required
-                        />
-                    </label>
-                    <button
-                        type="submit"
-                    >
-                        Submit
-                    </button>
 
-                </form>
-            }
+    return (
+        <div className='add-cash-container'>
+            <div className='add-cash-left-container'>
+                <h3>Cash Balance:</h3>
+                <h3 className='add-cash-total-cash'>${cashBalance?.toFixed(2)}</h3>
+            </div>
+            <div>
+                {!addCash &&
+                    <button
+                        onClick={e => setAddCash(true)}
+                    >Add Cash</button>}
+                {addCash &&
+                    <form onSubmit={handleSubmit}>
+                        <label>
+                            <input
+                                className="add-cash-input"
+                                placeholder='Enter amount in USD'
+                                type="number"
+                                min="0"
+                                max="10000"
+                                value={deposit}
+                                onChange={e => setDeposit(e.target.value)}
+                                required
+                            />
+                        </label>
+                        <button
+                            className="add-cash-buttons"
+                            type="submit"
+                        >
+                            Submit
+                        </button>
+                        <button
+                            className="add-cash-buttons"
+                            onClick={e => setAddCash(false)}
+                        >
+                            Cancel
+                        </button>
+
+                    </form>
+                }
+            </div>
         </div>
     )
 }

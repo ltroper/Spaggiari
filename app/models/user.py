@@ -10,7 +10,7 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(40), nullable=False, unique=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
-    cash = db.Column(db.Float)
+    cash = db.Column(db.Float, default=0.0)
 
     transactions = db.relationship("Transaction", back_populates="user")
     portfolios = db.relationship("Portfolio", back_populates="user")

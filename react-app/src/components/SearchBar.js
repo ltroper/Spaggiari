@@ -14,8 +14,6 @@ const getFilteredSearch = (search, cryptoArray) => {
 
 const SearchBar = () => {
 
-    const sessionUser = useSelector(state => state.session.user);
-
     const cryptoObj = useSelector(state => state.crypto)
     const cryptoArray = Object.values(cryptoObj)
 
@@ -25,16 +23,21 @@ const SearchBar = () => {
     const filteredSearch = getFilteredSearch(search, cryptoArray)
 
     return (
-        <div>
+        <div className='search-nav-bar-container'>
             <input
+                className='search-nav-bar'
                 type='text'
                 placeholder='Search Cryptos'
+                value={search}
                 onChange={e => setSearch(e.target.value)}
             />
             <div>
                 {filteredSearch?.map(crypto => (
-                    <NavLink to={`/crypto/${crypto.id}`}>
-                        <div key={crypto.id}>{crypto.name}</div>
+                    <NavLink
+                    style={{ textDecoration: "none", color: "black"}}
+                    to={`/crypto/${crypto.id}`}
+                    onClick={e => setSearch("")}>
+                        <div className='search-nav-bar-crypto' key={crypto.id}>{crypto.name}</div>
                     </NavLink>
                 ))}
             </div>

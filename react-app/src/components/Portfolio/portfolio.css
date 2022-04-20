@@ -1,0 +1,287 @@
+.body-portfolio {
+    margin: 2rem 6rem 0rem 8rem;
+    display: grid;
+    grid-template-areas:
+    "a b c";
+    grid-template-columns: 65% 6% 29%;
+}
+
+.left-container-portfolio {
+    grid-area: a;
+}
+
+.total-money-invested {
+    margin-bottom: 0.3rem;
+}
+
+.net-percentage-positive {
+    margin-top: 0%;
+    color: rgb(0, 200, 0);
+    font-size: 0.9rem;
+}
+
+.net-percentage-negative {
+    margin-top: 0%;
+    color: red;
+    font-size: 0.9rem;
+}
+
+.right-container-portfolio {
+    grid-area: c;
+    position: sticky;
+    color: antiquewhite;
+    background-color: rgb(74, 74, 74);
+    margin-top: 1rem;
+    margin-right: 2rem;
+    height: 31rem;
+    border-radius: 0.2rem;
+    border: 1px solid rgb(146, 146, 146);
+    overflow: scroll;
+}
+
+::-webkit-scrollbar {
+    display: none;
+  }
+
+.portfolio-crypto-header-container {
+    padding-left: 1.5rem;
+    height: 2.9rem;
+    border-bottom: 1px solid rgb(146, 146, 146);
+    display: flex;
+}
+
+.portfolio-crypto-header {
+    justify-content: center;
+    margin-top: 0.88rem;
+}
+
+.portfolio-crypto-coins-container {
+    border-bottom: 1px solid rgb(146, 146, 146);
+}
+
+.portfolio-individual-coin-container {
+    display: grid;
+    grid-template-areas:
+    "a b c";
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.portfolio-individual-coin-container:hover {
+    background-color: rgb(100, 100, 100);
+    cursor: pointer;
+    transition: background-color 0.3s;
+
+}
+
+.portfolio-individual-coin-left {
+    grid-area: a;
+    padding-left: 1.5rem;
+    margin-top: 0.5rem;
+}
+
+.portfolio-individual-coin-right {
+    grid-area: c;
+    margin-top: 0.5rem;
+}
+
+.small-crypto-symbol-container {
+    font-weight: 600;
+    font-size: small;
+    display: flex;
+}
+
+.small-crypto-symbol {
+    margin: 0.1rem 0 0 0;
+}
+
+.small-crypto-image {
+    height: 1rem;
+    margin: 0 0 0.5rem 0.5rem;
+    width: auto;
+    border-radius: 100%;
+}
+
+.small-crypto-values {
+    font-weight: 400;
+    font-size: smaller;
+    margin: 0rem 0 0.4rem 0;
+}
+
+.list-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.plus-sign {
+    margin-top: 1.2rem;
+    margin-right: 1rem;
+}
+
+.plus-sign:hover{
+    color: rgb(255, 69, 0);
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.portfolio-individual-watchlist-container {
+    max-width: 100%;
+    display: grid;
+    grid-template-areas:
+    "a b";
+    grid-template-columns: 1fr 1fr;
+    margin-bottom: 1rem;
+}
+
+.portfolio-individual-watchlist-left {
+    grid-area: a;
+    padding-left: 1.5rem;
+    margin-top: 0.6rem;
+}
+
+.portfolio-individual-watchlist-right {
+    grid-area: b;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin: 0.6rem 1.1rem 0.6rem 0;
+}
+
+.arrow-down {
+    border-left: 0.3rem solid antiquewhite;
+    border-bottom: 0.3rem solid antiquewhite;
+    width: 0.61rem;
+    height: 0.5rem;
+    transform: rotate(-45deg);
+    margin-left: 1rem;
+}
+
+.arrow-down:hover {
+    border-color: rgb(255, 69, 0);
+    cursor: pointer;
+    transition: border-color 0.2s;
+}
+
+.add-cash-container {
+    display: flex;
+    height: 2em;
+    align-items: center;
+    justify-content: space-between;
+    font-size: small;
+    margin: 1rem;
+}
+
+.add-cash-left-container {
+    display: flex;
+}
+
+.add-cash-total-cash {
+    margin-left: 1rem;
+}
+
+.add-new-list-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.add-new-list-input {
+    width: 12rem;
+    height: 2rem;
+    margin-top: 0.3em;
+}
+
+.add-new-list-submit {
+    background-color: rgb(255, 69, 0);
+    color: black;
+}
+
+.add-new-list-submit:hover {
+    background-color: rgb(255, 69, 0);
+}
+
+.add-new-list-container > button {
+    margin: 0.3rem;
+}
+
+.edit-delete-buttons-cont {
+    margin-top: 0.2rem;
+}
+
+.edit-delete-buttons {
+    height: 1rem;
+    width: 4rem;
+    font-weight: 400;
+    font-size: small;
+}
+
+.edit-delete-buttons:hover {
+    background-color: rgb(255, 69, 0);
+    color: black;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.hidden {
+    display: none;
+    /* animation-name: slide-in;
+    animation-duration: 0.5s; */
+}
+
+/* #watchlist-1 {
+    animation-name: slide-in;
+    animation-duration: 0.5s;
+}
+
+
+@keyframes slide-in {
+    from {
+        margin-top: -100%;
+        opacity: 0;
+    }
+    to {
+        margin-top:0%;
+        opacity: 0.9;
+    }
+} */
+
+
+
+.watchlist-list {
+    height: 2.5rem;
+    margin: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(146, 146, 146, 0.3);
+}
+
+
+.edit-name-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.edit-name-input {
+    margin: 1rem;
+}
+
+.edit-name-button{
+    margin: 0.5rem 0 0.5rem 1rem
+}
+
+.edit-name-button:hover {
+    background-color: rgb(255, 69, 0);
+    transition: background-color 0.2s;
+}
+
+.crypto-name-image {
+    display: flex;
+}
+
+.add-cash-input {
+    margin-right: 0.25rem;
+    height: 1.5rem;
+    width: 10rem;
+}
+
+.add-cash-buttons {
+    margin: 0.25rem;
+}
