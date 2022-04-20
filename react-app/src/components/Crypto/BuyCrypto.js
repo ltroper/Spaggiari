@@ -19,6 +19,7 @@ const BuyCrypto = ({ thisCrypto }) => {
     const [buying, setBuying] = useState(true)
     const [dollars, setDollars] = useState("dollar")
     const [investment, setInvestment] = useState()
+    const [investmentCrypto, setInvestmentCrypto] = useState()
 
     const sessionUser = useSelector(state => state.session.user);
     const userWithCash = useSelector(state => state.user[1]?.cash)
@@ -68,22 +69,22 @@ const BuyCrypto = ({ thisCrypto }) => {
         e.preventDefault();
         let user = {
             id: sessionUser.id,
-            cash: -investment
+            cash: -investmentCrypto
         };
 
         let portfolio = {
             crypto_id: thisCrypto.id,
             user_id: sessionUser.id,
-            total_price: investment * thisCrypto.current_price,
-            quantity: investment
+            total_price: investmentCrypto,
+            quantity: investmentCrypto/thisCrypto.current_price
         }
 
         let transaction = {
             crypto_id: thisCrypto.id,
             user_id: sessionUser.id,
             type: "buy",
-            price: investment * thisCrypto.current_price,
-            quantity: investment
+            price: investmentCrypto,
+            quantity: investmentCrypto / thisCrypto.current_price
         }
 
         dispatch(updateUserThunk(user))
@@ -127,22 +128,22 @@ const BuyCrypto = ({ thisCrypto }) => {
         e.preventDefault();
         let user = {
             id: sessionUser?.id,
-            cash: investment
+            cash: investmentCrypto
         };
 
         let portfolio = {
             crypto_id: thisCrypto?.id,
             user_id: sessionUser?.id,
-            total_price: -(investment * thisCrypto?.current_price),
-            quantity: -investment
+            total_price: -(investmentCrypto),
+            quantity: -investmentCrypto / thisCrypto?.current_price
         }
 
         let transaction = {
             crypto_id: thisCrypto?.id,
             user_id: sessionUser?.id,
             type: "sell",
-            price: investment * thisCrypto?.current_price,
-            quantity: investment
+            price: investmentCrypto,
+            quantity: investmentCrypto / thisCrypto?.current_price
         }
 
         dispatch(updateUserThunk(user))
@@ -245,7 +246,7 @@ const BuyCrypto = ({ thisCrypto }) => {
                                         min="0"
                                         max={buying ? (cashBalance / thisCrypto?.current_price) : cryptoObj[thisCrypto.id]}
                                         value={investment}
-                                        onChange={e => setInvestment(e.target.value)}
+                                        onChange={e => setInvestmentCrypto((e.target.value*thisCrypto?.current_price).toFixed(2))}
                                         required
                                     />
                                 </label>
@@ -253,9 +254,9 @@ const BuyCrypto = ({ thisCrypto }) => {
                             </div>
                             <label className="invest-in-container estimated-label">Est. Dollars
                                 <div>
-                                    {investment > 0 ?
+                                    {investmentCrypto > 0 ?
                                         <p>
-                                            ${(investment * thisCrypto?.current_price).toFixed(2)}
+                                            ${(investmentCrypto)}
                                         </p>
                                         : 0
                                     }
