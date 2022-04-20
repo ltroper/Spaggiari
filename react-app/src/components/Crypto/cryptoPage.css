@@ -1,6 +1,7 @@
 .right-container-crypto {
     grid-area: c;
     position: sticky;
+    top: 6rem;
     color: antiquewhite;
     background-color: rgb(74, 74, 74);
     margin-top: 1rem;
@@ -47,7 +48,7 @@
 
 .toggle-time-buttons {
     border-radius: 0;
-    margin: 1rem;
+    margin: 1rem 1rem 3rem 1rem;
     background-color: transparent;
     color: black;
     border: 1px solid black;

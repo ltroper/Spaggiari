@@ -25,7 +25,7 @@ const CrytpoGraph = ({ cryptoProp }) => {
         let newArr = []
         cryptoData?.forEach(element => {
             let dateObj = (new Date(element[0]))
-            newArr.push([`${dateObj.getFullYear()}/${dateObj.getMonth() + 1}/${dateObj.getDate()}/${dateObj.getHours()}h`, element[1]])
+            newArr.push([dateObj, element[1]])
         });
         setCryptoDatePrice(newArr)
     }, [dispatch, cryptoData, timeFrame])
@@ -39,6 +39,7 @@ const CrytpoGraph = ({ cryptoProp }) => {
         xArray.push(element[0])
         yArray.push(element[1])
     })
+
 
 
     return (
@@ -60,7 +61,7 @@ const CrytpoGraph = ({ cryptoProp }) => {
                         margin: {
                             b: 0,
                             r: 30,
-                            l: 30,
+                            l: 40,
                             t: 0,
                         },
                         autosize: true,

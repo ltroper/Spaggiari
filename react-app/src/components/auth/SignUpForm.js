@@ -3,6 +3,10 @@ import { useSelector, useDispatch } from 'react-redux'
 import { Redirect, NavLink } from 'react-router-dom';
 import { signUp } from '../../store/session';
 
+import github from '../../github-logo.png'
+import linkedin from  '../../linkedin-logo.png'
+
+
 const SignUpForm = () => {
   const [errors, setErrors] = useState([]);
   const [username, setUsername] = useState('');
@@ -115,7 +119,7 @@ const SignUpForm = () => {
               required={true}
             ></input>
           </div>
-          <button className='log-in-button' type='submit'>Sign Up</button>
+          <button className='log-in-button sign-up-button' type='submit'>Sign Up</button>
         </form>
         <div>
           {errors.map((error, ind) => (
@@ -133,6 +137,14 @@ const SignUpForm = () => {
               textUnderlineOffset: "0.2rem"
             }}>
             Log In</NavLink>
+        </div>
+        <div className='links-to-my-socials'>
+          <a href='https://github.com/ltroper/Spaggiari'>
+            <img src={github} className="github-linkedin-pics"/>
+          </a>
+          <a href='https://www.linkedin.com/in/leon-troper-91473a232/'>
+            <img src={linkedin} className="github-linkedin-pics"/>
+          </a>
         </div>
       </div>
     </div>
