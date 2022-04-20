@@ -4,6 +4,9 @@ import { NavLink } from 'react-router-dom';
 import { Redirect } from 'react-router-dom';
 import { login } from '../../store/session';
 
+import github from '../../github-logo.png'
+import linkedin from  '../../linkedin-logo.png'
+
 import './LoginForm.css'
 
 const LoginForm = () => {
@@ -89,6 +92,14 @@ const LoginForm = () => {
               textUnderlineOffset: "0.2rem"
             }}>
             Create an account</NavLink>
+        </div>
+        <div className='links-to-my-socials'>
+          <a href='https://github.com/ltroper/Spaggiari'>
+            <img src={github} className="github-linkedin-pics"/>
+          </a>
+          <a href='https://www.linkedin.com/in/leon-troper-91473a232/'>
+            <img src={linkedin} className="github-linkedin-pics"/>
+          </a>
         </div>
       </div>
     </div>
