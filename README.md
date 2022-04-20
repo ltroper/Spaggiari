@@ -48,4 +48,4 @@ Users can view the historical chart, buy and sell that crypto from the stock det
 Users will be able to search for cryptos based on the name. The search bar drops suggestions for cryptos that the user may be searching for.
 
 ## Link to wiki
-
+https://github.com/ltroper/Spaggiari/wiki
