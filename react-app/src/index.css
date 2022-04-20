@@ -27,4 +27,16 @@ button {
 
 button:hover {
   cursor: pointer;
+  background-color: rgba(255, 69, 0, 0.5);
+  color: black;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+input {
+  border: 1px solid rgba(182, 182, 182, 0.3);
+  border-radius: 5px;
+}
+
+input:focus {
+  outline: green solid 1px;
 }

@@ -10,7 +10,7 @@ const AddCash = ({ }) => {
     const dispatch = useDispatch()
 
     const sessionUser = useSelector(state => state.session.user);
-    const userWithCash = useSelector(state => state.user[1]?.cash)
+    const userWithCash = useSelector(state => state.user[sessionUser.id]?.cash)
 
     let cashBalance
 
@@ -39,6 +39,7 @@ const AddCash = ({ }) => {
 
     }
 
+
     return (
         <div className='add-cash-container'>
             <div className='add-cash-left-container'>
@@ -46,35 +47,39 @@ const AddCash = ({ }) => {
                 <h3 className='add-cash-total-cash'>${cashBalance?.toFixed(2)}</h3>
             </div>
             <div>
-            {!addCash &&
-                <button
-                    onClick={e => setAddCash(true)}
-                >Add Cash</button>}
-            {addCash &&
-                <form onSubmit={handleSubmit}>
-                    <label>Enter amount in USD
-                        <input
-                            type="number"
-                            min="0"
-                            max="10000"
-                            value={deposit}
-                            onChange={e => setDeposit(e.target.value)}
-                            required
-                        />
-                    </label>
+                {!addCash &&
                     <button
-                        type="submit"
-                    >
-                        Submit
-                    </button>
-                    <button
-                        onClick={e => setAddCash(false)}
-                    >
-                        Cancel
-                    </button>
+                        onClick={e => setAddCash(true)}
+                    >Add Cash</button>}
+                {addCash &&
+                    <form onSubmit={handleSubmit}>
+                        <label>
+                            <input
+                                className="add-cash-input"
+                                placeholder='Enter amount in USD'
+                                type="number"
+                                min="0"
+                                max="10000"
+                                value={deposit}
+                                onChange={e => setDeposit(e.target.value)}
+                                required
+                            />
+                        </label>
+                        <button
+                            className="add-cash-buttons"
+                            type="submit"
+                        >
+                            Submit
+                        </button>
+                        <button
+                            className="add-cash-buttons"
+                            onClick={e => setAddCash(false)}
+                        >
+                            Cancel
+                        </button>
 
-                </form>
-            }
+                    </form>
+                }
             </div>
         </div>
     )

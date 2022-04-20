@@ -16,7 +16,7 @@
 
 .net-percentage-positive {
     margin-top: 0%;
-    color: green;
+    color: rgb(0, 200, 0);
     font-size: 0.9rem;
 }
 
@@ -118,7 +118,7 @@
 }
 
 .plus-sign:hover{
-    color: orangered;
+    color: rgb(255, 69, 0);
     cursor: pointer;
     transition: color 0.2s;
 }
@@ -156,7 +156,7 @@
 }
 
 .arrow-down:hover {
-    border-color: orangered;
+    border-color: rgb(255, 69, 0);
     cursor: pointer;
     transition: border-color 0.2s;
 }
@@ -167,6 +167,7 @@
     align-items: center;
     justify-content: space-between;
     font-size: small;
+    margin: 1rem;
 }
 
 .add-cash-left-container {
@@ -191,8 +192,12 @@
 }
 
 .add-new-list-submit {
-    background-color: orangered;
+    background-color: rgb(255, 69, 0);
     color: black;
+}
+
+.add-new-list-submit:hover {
+    background-color: rgb(255, 69, 0);
 }
 
 .add-new-list-container > button {
@@ -211,7 +216,7 @@
 }
 
 .edit-delete-buttons:hover {
-    background-color: orangered;
+    background-color: rgb(255, 69, 0);
     color: black;
     transition: background-color 0.2s, color 0.2s;
 }
@@ -263,10 +268,20 @@
 }
 
 .edit-name-button:hover {
-    background-color: orangered;
+    background-color: rgb(255, 69, 0);
     transition: background-color 0.2s;
 }
 
 .crypto-name-image {
     display: flex;
+}
+
+.add-cash-input {
+    margin-right: 0.25rem;
+    height: 1.5rem;
+    width: 10rem;
+}
+
+.add-cash-buttons {
+    margin: 0.25rem;
 }

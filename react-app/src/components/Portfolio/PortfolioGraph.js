@@ -8,50 +8,62 @@ const PortfolioGraph = ( { cryptoObj } ) => {
 
     const [cryptoDatePrice, setCryptoDatePrice] = useState([])
 
-    const constructPortfolioHistory = async (cryptoObj) => {
-        let historyArr = []
 
-        const today = ((new Date().getTime()) / 1000) - 3600
-        const aMonthAgo = (today - 2678400) - 3600
+    //first try, don't know how to get value out of promise. Used .then but sooo stubborn
 
+    // const constructPortfolioHistory = async (cryptoObj) => {
+    //     let historyArr = []
 
-        for (let [name, amount] of Object.entries(cryptoObj)) {
-
-            let res = await fetch(`https://api.coingecko.com/api/v3/coins/${name}/market_chart/range?vs_currency=usd&from=${aMonthAgo}&to=${today}`)
-            const cryptoHistory = await res.json();
-
-            const cryptoPrices = await cryptoHistory.prices.map(value => {
-                return [value[0], value[1]*amount]
-            })
-            historyArr.push(cryptoPrices)
-
-            }
-
-            return historyArr
+    //     const today = ((new Date().getTime()) / 1000) - 3600
+    //     const aMonthAgo = (today - 2678400) - 3600
 
 
-    }
+    //     for (let [name, amount] of Object.entries(cryptoObj)) {
+
+    //         let res = await fetch(`https://api.coingecko.com/api/v3/coins/${name}/market_chart/range?vs_currency=usd&from=${aMonthAgo}&to=${today}`)
+    //         const cryptoHistory = await res.json();
+
+    //         const cryptoPrices = await cryptoHistory.prices.map(value => {
+    //             return [value[0], value[1]*amount]
+    //         })
+    //         historyArr.push(cryptoPrices)
+
+    //         }
+
+    //         return historyArr
 
 
+    // }
+
+
+
+
+    //another try, won't work
+
+
+
+    // let historyArr = []
 
     // useEffect(() => {
-    //     let newArr = []
-    //     cryptoData?.forEach(element => {
-    //         let dateObj = (new Date(element[0]))
-    //         newArr.push([`${dateObj.getMonth() + 1}/${dateObj.getDate()}/${dateObj.getHours()}h`, element[1]])
-    //     });
-    //     setCryptoDatePrice(newArr)
-    // }, [dispatch, cryptoData])
 
+    //     const today = ((new Date().getTime()) / 1000) - 3600
+    //     const aMonthAgo = (today - 2678400) - 3600
+    //     for (let [name, amount] of Object.entries(cryptoObj)) {
 
+    //         let res = await fetch(`https://api.coingecko.com/api/v3/coins/${name}/market_chart/range?vs_currency=usd&from=${aMonthAgo}&to=${today}`)
+    //         const cryptoHistory = await res.json();
 
-    // let xArray = []
-    // let yArray = []
+    //         const cryptoPrices = cryptoHistory.prices.map(value => {
+    //             return [value[0], value[1]*amount]
+    //         })
+    //         historyArr.push(cryptoPrices)
 
-    // cryptoDatePrice?.forEach(element => {
-    //     xArray.push(element[0])
-    //     yArray.push(element[1])
+    //         }
+
+    //         return historyArr
     // })
+
+    // console.log(historyArr)
 
     return(
         <Plot />
