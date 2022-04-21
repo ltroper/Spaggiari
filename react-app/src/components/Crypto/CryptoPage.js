@@ -42,11 +42,11 @@ const CryptoPage = () => {
                         <a href={news.url}>
                             <div className="individual-news-container">
                                 <div className="news-left">
-                                    <img className="news-image" src={news.urlToImage} />
+                                    <img className="news-image" src={news.image} />
                                 </div>
                                 <div className="news-right">
-                                    <h3 className="news-title">{news.title}</h3>
-                                    <p className="news-description">{news.description}</p>
+                                    <h3 className="news-title">{news.headline}</h3>
+                                    <p className="news-description">{news.summary}</p>
                                 </div>
                             </div>
                         </a>
