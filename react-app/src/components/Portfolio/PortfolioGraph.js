@@ -36,14 +36,14 @@ const customLayout = {
   grid: {columns: 1, rows: 1}, xaxis: {showgrid: false}, yaxis: {showgrid: false}
 };
 
-const PortfolioGraph = () => {
+const PortfolioGraph = ({ totalCryptoMoney }) => {
 
   const userPortfolio = useSelector(state => state.portfolio);
   const [portfolio, setPortfolio] = useState([]);
 
 
   const constructPortfolioHistory = async (s) => {
-      
+
     const priceHistories = [];
     const timeline = [];
     const today = ((new Date().getTime()) / 1000) - 3600;
@@ -51,12 +51,14 @@ const PortfolioGraph = () => {
 
     if (s.length > 0) {
       for (let {crypto_id: name, quantity} of Object.values(s)) {
-        let res = await fetch(`https://api.coingecko.com/api/v3/coins/${name}/market_chart/range?vs_currency=usd&from=${aMonthAgo}&to=${today}`);
-        const history = await res.json();
-        if (priceHistories.length === 0) { // Construct time axis once.
-          timeline.push(...history.prices.map(p => new Date(p[0])));
+        if (quantity > 0){
+          let res = await fetch(`https://api.coingecko.com/api/v3/coins/${name}/market_chart/range?vs_currency=usd&from=${aMonthAgo}&to=${today}`);
+          const history = await res.json();
+          if (priceHistories.length === 0) { // Construct time axis once.
+            timeline.push(...history.prices.map(p => new Date(p[0])));
+          }
+          priceHistories.push(history.prices.map(p => quantity * p[1]));
         }
-        priceHistories.push(history.prices.map(p => quantity * p[1]));
       }
       setPortfolio([timeline, foldData(priceHistories)]);
     }
@@ -68,12 +70,19 @@ const PortfolioGraph = () => {
 
     return (
       <div className="graph-container">
+        {totalCryptoMoney > 0 ?
         <Plot
           data={dataSet(portfolio)}
           layout={customLayout}
           useResizeHandler={true}
           style={{ width: "100%", height: "100%"}}
         />
+          : <Plot
+          layout={customLayout}
+          useResizeHandler={true}
+          style={{ width: "100%", height: "100%"}}
+          />
+      }
       </div>
     );
 };

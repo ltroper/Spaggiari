@@ -8,6 +8,7 @@ const updateUser = user => {
 };
 
 export const updateUserThunk = user => async dispatch => {
+    console.log(user)
     const res = await fetch('/api/users/edit', {
         method: "PUT",
         headers: { "Content-Type": "application/json" },

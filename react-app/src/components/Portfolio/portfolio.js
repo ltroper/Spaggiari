@@ -18,6 +18,7 @@ const CryptoPortfolio = ({ cryptoObj, cryptoObjPricePaid }) => {
             </div>
             <div className="portfolio-crypto-coins-container">
                 {Object.entries(cryptoObj).map(([key, value]) => (
+                    value > 0 &&
                     <NavLink
                         to={`/crypto/${key}`}
                         exact={true}
@@ -35,7 +36,7 @@ const CryptoPortfolio = ({ cryptoObj, cryptoObjPricePaid }) => {
                                 <p className={"net-percentage-" + (((((
                                     value * allCryptos[key]?.current_price)
                                     / cryptoObjPricePaid[key])
-                                    * 100) - 100) > 0 ? "positive" : "negative")}>
+                                    * 100) - 100) >= 0 ? "positive" : "negative")}>
                                     {((((
                                         value * allCryptos[key]?.current_price)
                                         / cryptoObjPricePaid[key])
