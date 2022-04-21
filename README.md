@@ -25,6 +25,9 @@ Spaggiari is built on a React frontend with a Flask backend, using PostgreSQL as
 ### Crypto Data
 - Coingecko API
 
+### News 
+- Finnhub API
+
 ## Spaggiari Setup
 
 1. Clone this repository (https://github.com/ltroper/Spaggiari.git)
