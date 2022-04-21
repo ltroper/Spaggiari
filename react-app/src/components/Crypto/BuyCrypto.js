@@ -126,6 +126,7 @@ const BuyCrypto = ({ thisCrypto }) => {
     async function handleSellSubmitCrypto(e) {
 
         e.preventDefault();
+        
         let user = {
             id: sessionUser?.id,
             cash: investmentCrypto

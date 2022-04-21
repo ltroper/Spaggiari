@@ -64,8 +64,8 @@ const Portfolio = () => {
         totalMoneyPaid += value
     ))
 
-    let netProfit = totalCryptoMoney - totalMoneyPaid
-    let netPercentage = ((totalCryptoMoney / totalMoneyPaid) * 100) - 100
+    let netProfit = (totalCryptoMoney - totalMoneyPaid).toFixed(2).replace('-0', '0')
+    let netPercentage = (((totalCryptoMoney / totalMoneyPaid) * 100) - 100).toFixed(2)
 
 
 
@@ -74,11 +74,12 @@ const Portfolio = () => {
             <div className="left-container-portfolio">
                 <h1 className="total-money-invested">${totalCryptoMoney.toFixed(2)}</h1>
                 <p className={"net-percentage-" + (netPercentage > 0 ? "positive" : "negative")}>
-                    ${netProfit.toFixed(2)}
+                    ${netProfit}
                     {" "}
-                    ({totalCryptoMoney === 0 ? "0" : netPercentage.toFixed(2)}%)
+
+                    ({netProfit === 0 ? "0" : netPercentage}%)
                 </p>
-                <PortfolioGraph cryptoObj={cryptoObj} />
+                <PortfolioGraph totalCryptoMoney={totalCryptoMoney}/>
                 <AddCash />
                 <div>
                     {smolNewsArr?.map(news => (

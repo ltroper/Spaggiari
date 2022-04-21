@@ -1,8 +1,8 @@
 from flask_wtf import FlaskForm
-from wtforms import IntegerField
+from wtforms import IntegerField, FloatField
 from wtforms.validators import DataRequired
 
 
 class AddCashForm(FlaskForm):
     id = IntegerField("id")
-    cash = IntegerField("cash", validators=[DataRequired()])
+    cash = FloatField("cash", validators=[DataRequired()])
