@@ -206,7 +206,7 @@ const BuyCrypto = ({ thisCrypto }) => {
                                         type="number"
                                         step="0.01"
                                         min="0"
-                                        max={buying ? cashBalance : cryptoObj[thisCrypto.id] * thisCrypto.current_price}
+                                        max={buying ? cashBalance : (cryptoObj[thisCrypto.id] * thisCrypto.current_price)-1}
                                         placeholder="$0.00"
                                         value={investment}
                                         onChange={e => setInvestment(e.target.value)}
@@ -259,7 +259,7 @@ const BuyCrypto = ({ thisCrypto }) => {
                                         type="number"
                                         step="0.0001"
                                         min="0"
-                                        max={buying ? (cashBalance / thisCrypto?.current_price) : cryptoObj[thisCrypto.id]}
+                                        max={buying ? (cashBalance / thisCrypto?.current_price)-1 : (cryptoObj[thisCrypto.id])-0.0001}
                                         value={investment}
                                         onChange={e => setInvestmentCrypto((e.target.value * thisCrypto?.current_price).toFixed(2))}
                                         required
