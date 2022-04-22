@@ -18,6 +18,7 @@ const CryptoPortfolio = ({ cryptoObj, cryptoObjPricePaid }) => {
             </div>
             <div className="portfolio-crypto-coins-container">
                 {Object.entries(cryptoObj).map(([key, value]) => (
+                    value * allCryptos[key]?.current_price > 0.01 &&
                     <NavLink
                         to={`/crypto/${key}`}
                         exact={true}
