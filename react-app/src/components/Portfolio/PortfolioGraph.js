@@ -70,7 +70,7 @@ const PortfolioGraph = ({ totalCryptoMoney }) => {
 
     return (
       <div className="graph-container">
-        {totalCryptoMoney > 0 ?
+        {totalCryptoMoney > 0.5 ?
         <Plot
           data={dataSet(portfolio)}
           layout={customLayout}
