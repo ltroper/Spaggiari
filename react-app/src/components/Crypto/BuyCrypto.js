@@ -76,7 +76,7 @@ const BuyCrypto = ({ thisCrypto }) => {
             crypto_id: thisCrypto.id,
             user_id: sessionUser.id,
             total_price: investmentCrypto,
-            quantity: investmentCrypto/thisCrypto.current_price
+            quantity: investmentCrypto / thisCrypto.current_price
         }
 
         let transaction = {
@@ -126,7 +126,7 @@ const BuyCrypto = ({ thisCrypto }) => {
     async function handleSellSubmitCrypto(e) {
 
         e.preventDefault();
-        
+
         let user = {
             id: sessionUser?.id,
             cash: investmentCrypto
@@ -215,6 +215,20 @@ const BuyCrypto = ({ thisCrypto }) => {
                                 </label>
                                 <div className="amount-container-border"></div>
                             </div>
+                            {buying && <label className="invest-in-container estimated-label"> Available cash
+                                <div>
+                                    <p>
+                                        ${(cashBalance.toFixed(2))}
+                                    </p>
+                                </div>
+                            </label>}
+                            {!buying && <label className="invest-in-container estimated-label"> Available {thisCrypto.symbol}
+                                <div>
+                                    <p>
+                                        {(cryptoObj[thisCrypto.id].toFixed(5))}
+                                    </p>
+                                </div>
+                            </label>}
                             <label className="invest-in-container estimated-label">Est. Quantity
                                 <div>
                                     {investment > 0 ?
@@ -247,12 +261,27 @@ const BuyCrypto = ({ thisCrypto }) => {
                                         min="0"
                                         max={buying ? (cashBalance / thisCrypto?.current_price) : cryptoObj[thisCrypto.id]}
                                         value={investment}
-                                        onChange={e => setInvestmentCrypto((e.target.value*thisCrypto?.current_price).toFixed(2))}
+                                        onChange={e => setInvestmentCrypto((e.target.value * thisCrypto?.current_price).toFixed(2))}
                                         required
                                     />
                                 </label>
                                 <div className="amount-container-border"></div>
                             </div>
+                            {buying && <label className="invest-in-container estimated-label"> Available cash
+                                <div>
+                                    <p>
+                                        ${(cashBalance.toFixed(2))}
+                                    </p>
+                                </div>
+                            </label>}
+                            {!buying && <label className="invest-in-container estimated-label"> Available {thisCrypto.symbol}
+                                <div>
+                                    <p>
+                                        {(cryptoObj[thisCrypto.id].toFixed(5))}
+                                    </p>
+                                </div>
+                            </label>}
+
                             <label className="invest-in-container estimated-label">Est. Dollars
                                 <div>
                                     {investmentCrypto > 0 ?
