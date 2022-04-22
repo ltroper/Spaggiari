@@ -259,7 +259,7 @@ const BuyCrypto = ({ thisCrypto }) => {
                                         type="number"
                                         step="0.0001"
                                         min="0"
-                                        max={buying ? (cashBalance / thisCrypto?.current_price) : (cryptoObj[thisCrypto.id])-1}
+                                        max={buying ? (cashBalance / thisCrypto?.current_price)-1 : (cryptoObj[thisCrypto.id])-0.0001}
                                         value={investment}
                                         onChange={e => setInvestmentCrypto((e.target.value * thisCrypto?.current_price).toFixed(2))}
                                         required
