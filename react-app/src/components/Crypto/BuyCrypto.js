@@ -22,7 +22,7 @@ const BuyCrypto = ({ thisCrypto }) => {
     const [investmentCrypto, setInvestmentCrypto] = useState()
 
     const sessionUser = useSelector(state => state.session.user);
-    const userWithCash = useSelector(state => state.user[1]?.cash)
+    const userWithCash = useSelector(state => state.user[sessionUser?.id]?.cash)
     const cryptoArr = useSelector(state => state.portfolio);
 
     const id = sessionUser.id

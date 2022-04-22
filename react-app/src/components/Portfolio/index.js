@@ -77,7 +77,7 @@ const Portfolio = () => {
                     ${netProfit}
                     {" "}
 
-                    ({netProfit === 0 ? "0" : netPercentage}%)
+                    ({netProfit === 0 ? "0" : (netPercentage > -1 ? netPercentage : "0") }%)
                 </p>
                 <PortfolioGraph totalCryptoMoney={totalCryptoMoney}/>
                 <AddCash />
