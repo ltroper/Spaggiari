@@ -218,14 +218,14 @@ const BuyCrypto = ({ thisCrypto }) => {
                             {buying && <label className="invest-in-container estimated-label"> Available cash
                                 <div>
                                     <p>
-                                        ${(cashBalance.toFixed(2))}
+                                        ${(cashBalance?.toFixed(2))}
                                     </p>
                                 </div>
                             </label>}
                             {!buying && <label className="invest-in-container estimated-label"> Available {thisCrypto.symbol}
                                 <div>
                                     <p>
-                                        {(cryptoObj[thisCrypto.id].toFixed(5))}
+                                        {(cryptoObj[thisCrypto?.id]?.toFixed(5))}
                                     </p>
                                 </div>
                             </label>}
@@ -270,14 +270,14 @@ const BuyCrypto = ({ thisCrypto }) => {
                             {buying && <label className="invest-in-container estimated-label"> Available cash
                                 <div>
                                     <p>
-                                        ${(cashBalance.toFixed(2))}
+                                        ${(cashBalance?.toFixed(2))}
                                     </p>
                                 </div>
                             </label>}
                             {!buying && <label className="invest-in-container estimated-label"> Available {thisCrypto.symbol}
                                 <div>
                                     <p>
-                                        {(cryptoObj[thisCrypto.id].toFixed(5))}
+                                        {(cryptoObj[thisCrypto?.id]?.toFixed(5))}
                                     </p>
                                 </div>
                             </label>}

@@ -34,7 +34,6 @@ const crytpoNewsReducer = (state = initialState, action) => {
 
         case GET_NEWS:
             newState = {};
-            console.log(action.news)
             newState = action.news
             return newState
 
