@@ -333,3 +333,8 @@
     font-size: 0.7rem;
     margin: 0.4rem;
 }
+
+.error-message-watchlist {
+    font-size: 0.8rem;
+    margin-left: 0.5rem;
+}

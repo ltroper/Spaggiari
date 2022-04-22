@@ -115,22 +115,25 @@ const Watchlist = () => {
                             </div>
                             <div id={`watchlist-${id}`} className={"hidden"}>
                                 {
-                                    cryptoLists?.filter((c) => c['watchlist_id'] === +id).map(filteredCrypt => (
-                                        <div className="watchlist-list">
-                                            <div className="crypto-name-image">
-                                                <NavLink to={`/crypto/${filteredCrypt.crypto_id}`}
-                                                    exact={true}
-                                                    style={{ textDecoration: "none", color: "antiquewhite" }}
-                                                >
-                                                    <div>{filteredCrypt.crypto_id.toUpperCase()}</div>
-                                                </NavLink>
+                                    cryptoLists.length > 0 ?
+                                        cryptoLists?.filter((c) => c['watchlist_id'] === +id).map(filteredCrypt => (
+                                            <div className="watchlist-list">
+                                                <div className="crypto-name-image">
+                                                    <NavLink to={`/crypto/${filteredCrypt.crypto_id}`}
+                                                        exact={true}
+                                                        style={{ textDecoration: "none", color: "antiquewhite" }}
+                                                    >
+                                                        <div>{filteredCrypt.crypto_id.toUpperCase()}</div>
+                                                    </NavLink>
                                                     <img className="small-crypto-image" src={allCryptos[filteredCrypt.crypto_id]?.image}></img>
+                                                </div>
+                                                <div className="remove-button-container">
+                                                    <button onClick={e => dispatch(deleteWatchCryptoThunk(filteredCrypt.id))} className="edit-delete-buttons">Remove</button>
+                                                </div>
                                             </div>
-                                            <div className="remove-button-container">
-                                                <button onClick={e => dispatch(deleteWatchCryptoThunk(filteredCrypt.id))} className="edit-delete-buttons">Remove</button>
-                                            </div>
-                                        </div>
-                                    ))
+                                        ))
+                                        :
+                                <div className="error-message-watchlist">This list is empty!</div>
                                 }
                             </div>
                         </div>
