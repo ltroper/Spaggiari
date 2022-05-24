@@ -73,10 +73,9 @@ const Portfolio = () => {
         <div className="body-portfolio">
             <div className="left-container-portfolio">
                 <h1 className="total-money-invested">${totalCryptoMoney.toFixed(2) > 0.5 ? totalCryptoMoney.toFixed(2) : "0"}</h1>
-                <p className={"net-percentage-" + (netPercentage > 0 ? "positive" : "negative")}>
+                <p className={"net-percentage-" + (netPercentage >= 0 ? "positive" : "negative")}>
                     ${netProfit}
                     {" "}
-
                     ({netProfit === 0 ? "0" : netPercentage }%)
                 </p>
                 <PortfolioGraph totalCryptoMoney={totalCryptoMoney}/>
