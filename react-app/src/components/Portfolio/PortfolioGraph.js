@@ -6,8 +6,8 @@ import Plot from 'react-plotly.js';
 function foldData(matrix) {
   // we need to reduce over VERTICAL indices, in order to do this conveniently,
   // we have to take a matrix transpose.
-  const result = new Array(matrix[0].length).fill(0);
-  const matrixTranspose = matrix[0].map((_,x) => matrix.map(m_y => m_y = m_y[x]));
+  const result = new Array(matrix[0]?.length).fill(0);
+  const matrixTranspose = matrix[0]?.map((_,x) => matrix.map(m_y => m_y = m_y[x]));
   // we then map elements of results array into sum over columns of matrix.
   return result.map((a,u) => matrixTranspose[u].reduce((a, v) => a + v));
 } //
@@ -42,6 +42,8 @@ const PortfolioGraph = ({ totalCryptoMoney }) => {
   const [portfolio, setPortfolio] = useState([]);
 
 
+
+
   const constructPortfolioHistory = async (s) => {
 
     const priceHistories = [];
@@ -51,9 +53,11 @@ const PortfolioGraph = ({ totalCryptoMoney }) => {
 
     if (s.length > 0) {
       for (let {crypto_id: name, quantity} of Object.values(s)) {
-        if (quantity > 0){
+        if (Math.abs(quantity) > 0){
           let res = await fetch(`https://api.coingecko.com/api/v3/coins/${name}/market_chart/range?vs_currency=usd&from=${aMonthAgo}&to=${today}`);
           const history = await res.json();
+          console.log(userPortfolio)
+          console.log(quantity)
           if (priceHistories.length === 0) { // Construct time axis once.
             timeline.push(...history.prices.map(p => new Date(p[0])));
           }
